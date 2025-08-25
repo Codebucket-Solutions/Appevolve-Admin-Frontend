@@ -1,0 +1,93 @@
+{
+    "moduleHeader": [
+        {
+            "label": "Module 1",
+            "initial": "S",
+            "color": "#f97316",
+            "actions": [
+                {
+                    "label": "Settings",
+                    "icon": "Settings",
+                    "route": "/system/settings"
+                },
+                {
+                    "label": "Help",
+                    "icon": "Info",
+                    "route": "/system/help"
+                }
+            ],
+            "search": {
+                "enabled": true,
+                "placeholder": "Search"
+            }
+        }
+    ],
+    "modules": [
+        {
+            "label": "MAIN",
+            "children": [
+                {
+                    "label": "Dashboard",
+                    "icon": "Home",
+                    "route": "/dashboard"
+                },
+                {
+                    "label": "Questions",
+                    "icon": "Info",
+                    "route": "/questions",
+                    "badge": 2,
+                    "children": [
+                        {
+                            "label": "Heading",
+                            "children": [
+                                {
+                                    "label": "Sub Heading",
+                                    "children": [
+                                        {
+                                            "label": "Detailed",
+                                            "route": "/questions/detailed"
+                                        },
+                                        {
+                                            "label": "Extra Detail",
+                                            "route": "/questions/detailed/extra"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "Sub Heading 2",
+                                    "children": [
+                                        {
+                                            "label": "Another Detail",
+                                            "route": "/questions/another"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "SYSTEM",
+            "children": [
+                {
+                    "label": "Settings",
+                    "icon": "Settings",
+                    "route": "/system/settings"
+                },
+                {
+                    "label": "Help",
+                    "icon": "Info",
+                    "route": "/system/help"
+                }
+            ]
+        }
+    ],
+    "profile": {
+        "name": "Amrit Anand",
+        "email": "amritanand@sodi.com",
+        "avatar": "/avatar.png",
+        "cta": "Complete Profile"
+    }
+}
