@@ -20,6 +20,43 @@
                 "enabled": true,
                 "placeholder": "Search"
             }
+        },
+        {
+            "label": "Module 2",
+            "initial": "M",
+            "color": "#06b6d4",
+            "actions": [
+                {
+                    "label": "Profile",
+                    "icon": "AccountCircle",
+                    "route": "/profile"
+                },
+                {
+                    "label": "Notifications",
+                    "icon": "Notifications",
+                    "route": "/notifications"
+                }
+            ],
+            "search": {
+                "enabled": true,
+                "placeholder": "Search module 2"
+            }
+        },
+        {
+            "label": "Module 3",
+            "initial": "A",
+            "color": "#10b981",
+            "actions": [
+                {
+                    "label": "Analytics",
+                    "icon": "BarChart",
+                    "route": "/analytics"
+                }
+            ],
+            "search": {
+                "enabled": false,
+                "placeholder": ""
+            }
         }
     ],
     "modules": [

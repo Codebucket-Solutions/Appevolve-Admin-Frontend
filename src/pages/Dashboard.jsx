@@ -42,12 +42,14 @@ const Dashboard = () => {
                     Overview of your application's key statistics
                 </p>
             </div> */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <StatsCard title="Total Applications" value="24" trend="up" />
-                <StatsCard title="Total Applications" value="24" trend="down" />
-                <StatsCard title="Total Applications" value="24" />
-                <StatsCard title="Total Applications" value="24" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <StatsCard title="Users" value="350" trend="up" bg="bg-blue-500" />
+                <StatsCard title="Questions" value="1200" trend="down" bg="bg-red-500" />
+                <StatsCard title="Assessment Profiles" value="87" trend="up" bg="bg-green-500" />
+                {/* <StatsCard title="Applications" value="540" trend="up" bg="bg-purple-500" />
+    <StatsCard title="Pre-Signed URLs" value="23" trend="up" bg="bg-orange-500" /> */}
             </div>
+
 
             {/* Reports / Statistics Grid */}
             <div>

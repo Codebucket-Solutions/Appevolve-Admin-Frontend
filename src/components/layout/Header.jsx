@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import { Sun, Moon } from "lucide-react"
+import { Sun, Moon, Accessibility } from "lucide-react" // ♿ icon
 
-const Header = () => {
+const Header = ({ onToggleAccessibility }) => {
     const [darkMode, setDarkMode] = useState(true)
 
     useEffect(() => {
@@ -17,6 +17,7 @@ const Header = () => {
             <h1 className="text-lg font-semibold text-neutral-900 dark:text-white">AppEnvolve</h1>
 
             <div className="flex items-center gap-4">
+                {/* Dark mode toggle */}
                 <button
                     onClick={() => setDarkMode(!darkMode)}
                     className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
@@ -27,6 +28,15 @@ const Header = () => {
                     ) : (
                         <Moon className="h-4 w-4 text-neutral-600" />
                     )}
+                </button>
+
+                {/* Accessibility toggle */}
+                <button
+                    onClick={onToggleAccessibility}
+                    className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                    aria-label="Accessibility options"
+                >
+                    <Accessibility className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                 </button>
 
                 {/* Other actions */}

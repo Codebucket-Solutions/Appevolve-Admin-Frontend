@@ -40,6 +40,35 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
+.text-scale-1 {
+  font-size: 100%;
+}
+
+.text-scale-2 {
+  font-size: 120%;
+}
+
+.text-scale-3 {
+  font-size: 140%;
+}
+
+.text-scale-4 {
+  font-size: 160%;
+}
+
+.adhd-mode *:focus {
+  outline: 3px solid red !important;
+}
+
+.pause-animations * {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
+
+.dark {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
 
 :root {
   --radius: 0.625rem;

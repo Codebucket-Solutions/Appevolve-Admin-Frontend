@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
@@ -32,7 +32,7 @@ const SidebarItem = ({ item, depth = 0, openItems, toggleItem }) => {
     }
 
     const left = (
-        <div className="flex-1 flex items-center gap-2">
+        <div className="flex-1 flex items-center gap-2 ">
             {item.icon && <LIcon name={item.icon} className="h-5 w-5 shrink-0" />}
             {!collapsed && <span>{item.label}</span>}
             {item.badge && !collapsed && (
@@ -91,7 +91,8 @@ const Sidebar = () => {
     const { openItems, toggleItem } = useSidebar()
     const dispatch = useDispatch()
     const collapsed = useSelector((s) => s.layout.collapsed)
-    const header = modules.moduleHeader[0]
+    const [selectedHeader, setSelectedHeader] = useState(modules.moduleHeader[0])
+    const header = selectedHeader
 
     return (
         <div
@@ -128,7 +129,24 @@ const Sidebar = () => {
                         </div>
                         {!collapsed && <span className="text-base">{header.label}</span>}
                     </div>
-                    {!collapsed && <ChevronDown className="h-4 w-4 text-neutral-400" />}
+                    {!collapsed && (
+                        <select
+                            className="bg-transparent text-neutral-400 text-sm focus:outline-none"
+                            value={header.label}
+                            onChange={e => {
+                                const selected = modules.moduleHeader.find(h => h.label === e.target.value)
+                                if (selected) {
+                                    setSelectedHeader(selected)
+                                }
+                            }}
+                        >
+                            {modules.moduleHeader.map(h => (
+                                <option key={h.label} value={h.label} className="text-black">
+                                    {h.label}
+                                </option>
+                            ))}
+                        </select>
+                    )}
                 </div>
 
                 {!collapsed && (
@@ -164,7 +182,7 @@ const Sidebar = () => {
             </div>
 
             {/* --- Sections (MAIN, SYSTEM, etc.) --- */}
-            <div className="p-2 space-y-4 overflow-y-auto flex-1">
+            <div className="p-2 space-y-4 overflow-y-auto flex-1 pr-3">
                 {modules.modules.map((section) => (
                     <div key={section.label}>
                         {!collapsed && (
@@ -216,3 +234,5 @@ const Sidebar = () => {
 }
 
 export default Sidebar
+
+// export default Sidebar
