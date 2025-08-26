@@ -60,7 +60,7 @@ export default function App() {
           />
         </div>) : (
         <div className="flex h-screen w-full bg-gray-50 dark:bg-gray-900">
-          <Login />
+          {/* <Login /> */}
           <ModuleChooseContainer onClickModule={() => setIsLoggedIn(true)} />
         </div>
       )}
