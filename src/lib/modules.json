@@ -1,0 +1,145 @@
+{
+    "moduleHeader": [
+        {
+            "label": "Module 1",
+            "initial": "S",
+            "color": "#f97316",
+            "actions": [
+                {
+                    "label": "Settings",
+                    "icon": "Settings",
+                    "route": "/system/settings"
+                },
+                {
+                    "label": "Help",
+                    "icon": "Info",
+                    "route": "/system/help"
+                }
+            ],
+            "search": {
+                "enabled": true,
+                "placeholder": "Search"
+            }
+        },
+        {
+            "label": "Module 2",
+            "initial": "M",
+            "color": "#06b6d4",
+            "actions": [
+                {
+                    "label": "Profile",
+                    "icon": "CircleUser",
+                    "route": "/profile"
+                },
+                {
+                    "label": "Notifications",
+                    "icon": "Bell",
+                    "route": "/notifications"
+                }
+            ],
+            "search": {
+                "enabled": true,
+                "placeholder": "Search module 2"
+            }
+        },
+        {
+            "label": "Module 3",
+            "initial": "A",
+            "color": "#10b981",
+            "actions": [
+                {
+                    "label": "Analytics",
+                    "icon": "BarChart2",
+                    "route": "/analytics"
+                }
+            ],
+            "search": {
+                "enabled": false,
+                "placeholder": ""
+            }
+        }
+    ],
+    "modules": [
+        {
+            "label": "MAIN",
+            "children": [
+                {
+                    "label": "Dashboard",
+                    "icon": "LayoutDashboard",
+                    "route": "/dashboard"
+                },
+                {
+                    "label": "Questions",
+                    "icon": "HelpCircle",
+                    "route": "/questions",
+                    "badge": 2,
+                    "children": [
+                        {
+                            "label": "Heading",
+                            "children": [
+                                {
+                                    "label": "Sub Heading",
+                                    "children": [
+                                        {
+                                            "label": "Detailed",
+                                            "route": "/questions/detailed"
+                                        },
+                                        {
+                                            "label": "Extra Detail",
+                                            "route": "/questions/detailed/extra"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "Sub Heading 2",
+                                    "children": [
+                                        {
+                                            "label": "Another Detail",
+                                            "route": "/questions/another"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "label": "Applications",
+                    "icon": "FolderKanban",
+                    "route": "/applications"
+                },
+                {
+                    "label": "Assessment Profiles",
+                    "icon": "NotebookPen",
+                    "route": "/assessments"
+                }
+            ]
+        },
+        {
+            "label": "OTHERS",
+            "children": [
+                {
+                    "label": "Clients",
+                    "icon": "Users",
+                    "route": "/clients"
+                },
+                {
+                    "label": "Users",
+                    "icon": "Users",
+                    "route": "/users"
+                },
+                {
+                    "label": "Insight",
+                    "icon": "BarChart",
+                    "route": "/insight"
+                }
+            ]
+        }
+    ],
+    "profile": {
+        "name": "Amrit Anand",
+        "email": "amritanand@sodi.com",
+        "avatar": "/avatar.png",
+        "cta": "Complete Profile"
+    }
+}

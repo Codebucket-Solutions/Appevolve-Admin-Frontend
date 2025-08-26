@@ -1,0 +1,52 @@
+{
+    "stats": [
+        {
+            "id": "totalApps",
+            "title": "Total Applications",
+            "value": "350",
+            "trend": "up",
+            "bg": "bg-blue-500",
+            "visible": true
+        },
+        {
+            "id": "questions",
+            "title": "Questions",
+            "value": "1200",
+            "trend": "down",
+            "bg": "bg-red-500",
+            "visible": true
+        },
+        {
+            "id": "profiles",
+            "title": "Assessment Profiles",
+            "value": "87",
+            "trend": "up",
+            "bg": "bg-green-500",
+            "visible": true
+        },
+        {
+            "id": "urls",
+            "title": "Pre-Signed URLs",
+            "value": "23",
+            "trend": "up",
+            "bg": "bg-orange-500",
+            "visible": false
+        }
+    ],
+    "reports": [
+        {
+            "id": "users",
+            "title": "Users",
+            "value": "3",
+            "trend": "up",
+            "visible": true
+        },
+        {
+            "id": "apps",
+            "title": "Applications",
+            "value": "3",
+            "trend": "up",
+            "visible": true
+        }
+    ]
+}
