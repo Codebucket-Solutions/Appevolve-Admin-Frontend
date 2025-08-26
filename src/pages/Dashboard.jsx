@@ -1,8 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 import StatsCard from "@/components/dashboard/StatsCard"
 import Reports from "@/components/dashboard/Reports"
+import SidebarConfig from "@/components/dashboard/SidebarConfig"
 
-const Dashboard = () => {
+
+const Dashboard = (props) => {
+
+    // console.log("🚀 ~ Dashboard ~ config:", config)
+
     return (
         <div className="p-6 space-y-6">
             {/* Page Header */}
@@ -13,7 +18,10 @@ const Dashboard = () => {
                         Start exploring AppEnvolve
                     </p>
                 </div>
-                <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+                <button
+                    onClick={() => props.setOpen(true)}
+                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                >
                     Configure
                 </button>
             </div>
@@ -33,40 +41,34 @@ const Dashboard = () => {
             </div>
 
             {/* Stats Cards */}
-
-            {/* <div>
-                <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
-                    Key Metrics
-                </h2>
-                <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                    Overview of your application's key statistics
-                </p>
-            </div> */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <StatsCard title="Users" value="350" trend="up" bg="bg-blue-500" />
-                <StatsCard title="Questions" value="1200" trend="down" bg="bg-red-500" />
-                <StatsCard title="Assessment Profiles" value="87" trend="up" bg="bg-green-500" />
-                {/* <StatsCard title="Applications" value="540" trend="up" bg="bg-purple-500" />
-    <StatsCard title="Pre-Signed URLs" value="23" trend="up" bg="bg-orange-500" /> */}
+            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
+                {props?.config.stats
+                    .filter((c) => c.visible)
+                    .map((card) => (
+                        <StatsCard key={card.id} {...card} />
+                    ))}
             </div>
-
 
             {/* Reports / Statistics Grid */}
             <div>
                 <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
                     Statistics and Reports
                 </h2>
-                {/* <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                    Overview of your application's reports
-                </p> */}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Reports title="Users" value="3" trend="up" />
-                <Reports title="Questions" value="3" trend="up" />
-                <Reports title="Assessment Profiles" value="3" trend="up" />
-                <Reports title="Applications" value="3" trend="up" />
-                <Reports title="Pre-Signed URLs" value="3" trend="up" />
+                {props?.config.reports
+                    .filter((c) => c.visible)
+                    .map((rep) => (
+                        <Reports key={rep.id} {...rep} />
+                    ))}
             </div>
+
+            {/* <SidebarConfig
+                open={open}
+                setOpen={setOpen}
+                config={config}
+                setConfig={setConfig}
+            /> */}
         </div>
     )
 }

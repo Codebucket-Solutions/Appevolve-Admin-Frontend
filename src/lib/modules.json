@@ -28,12 +28,12 @@
             "actions": [
                 {
                     "label": "Profile",
-                    "icon": "AccountCircle",
+                    "icon": "CircleUser",
                     "route": "/profile"
                 },
                 {
                     "label": "Notifications",
-                    "icon": "Notifications",
+                    "icon": "Bell",
                     "route": "/notifications"
                 }
             ],
@@ -49,7 +49,7 @@
             "actions": [
                 {
                     "label": "Analytics",
-                    "icon": "BarChart",
+                    "icon": "BarChart2",
                     "route": "/analytics"
                 }
             ],
@@ -65,12 +65,12 @@
             "children": [
                 {
                     "label": "Dashboard",
-                    "icon": "Home",
+                    "icon": "LayoutDashboard",
                     "route": "/dashboard"
                 },
                 {
                     "label": "Questions",
-                    "icon": "Info",
+                    "icon": "HelpCircle",
                     "route": "/questions",
                     "badge": 2,
                     "children": [
@@ -102,21 +102,36 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "label": "Applications",
+                    "icon": "FolderKanban",
+                    "route": "/applications"
+                },
+                {
+                    "label": "Assessment Profiles",
+                    "icon": "NotebookPen",
+                    "route": "/assessments"
                 }
             ]
         },
         {
-            "label": "SYSTEM",
+            "label": "OTHERS",
             "children": [
                 {
-                    "label": "Settings",
-                    "icon": "Settings",
-                    "route": "/system/settings"
+                    "label": "Clients",
+                    "icon": "Users",
+                    "route": "/clients"
                 },
                 {
-                    "label": "Help",
-                    "icon": "Info",
-                    "route": "/system/help"
+                    "label": "Users",
+                    "icon": "Users",
+                    "route": "/users"
+                },
+                {
+                    "label": "Insight",
+                    "icon": "BarChart",
+                    "route": "/insight"
                 }
             ]
         }

@@ -17,7 +17,6 @@ const AccessibilityPanel = ({ open, setOpen }) => {
   const dispatch = useDispatch()
   const a11y = useSelector((state) => state.accessibility)
 
-  console.log(a11y)
 
   const tools = [
     { icon: <Type />, label: "Bigger Text", onClick: () => dispatch(increaseTextSize()), level: a11y.textSize },
@@ -38,8 +37,8 @@ const AccessibilityPanel = ({ open, setOpen }) => {
 
   return (
     <div
-      className={`fixed top-0 right-0 h-screen bg-[#f3c6a6] transition-all duration-300 ease-in-out z-50
-        ${open ? "w-80 p-4" : "w-0 overflow-hidden"}`}
+      className={`fixed top-0 right-0 h-screen bg-[#000000] transition-all duration-300 ease-in-out z-50
+        ${open ? "w-[20vw] min-w-[350px] p-4" : "w-0 overflow-hidden"}`}
     >
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-neutral-900">Accessibility</h2>
@@ -52,7 +51,9 @@ const AccessibilityPanel = ({ open, setOpen }) => {
             key={i}
             onClick={t.onClick}
             className={`flex flex-col items-center justify-center p-4 rounded-lg shadow transition-colors
-              ${t.active ? "bg-[#e59a6d]" : "bg-[#f2b988] hover:bg-[#f0a868]"}`}
+    ${t.active
+                ? "bg-blue-600 dark:bg-blue-500 text-white"
+                : "bg-amber-300 hover:bg-amber-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white"}`}
           >
             {t.icon}
 
@@ -62,9 +63,10 @@ const AccessibilityPanel = ({ open, setOpen }) => {
                 {[...Array(4)].map((_, idx) => (
                   <span
                     key={idx}
-                    className={`w-2 h-1 rounded ${
-                      idx < t.level ? "bg-black/80" : "bg-black/20"
-                    }`}
+                    className={`w-2 h-1 rounded ${idx < t.level
+                      ? "bg-black/80 dark:bg-white/80"
+                      : "bg-black/20 dark:bg-white/20"
+                      }`}
                   />
                 ))}
               </div>
@@ -72,6 +74,7 @@ const AccessibilityPanel = ({ open, setOpen }) => {
 
             <span className="text-xs mt-2 font-medium text-center">{t.label}</span>
           </button>
+
         ))}
       </div>
     </div>

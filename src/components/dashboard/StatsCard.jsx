@@ -6,19 +6,19 @@ const StatsCard = ({ title, value, icon: IconComponent, trend, bg = "bg-blue-500
         trend === "up"
             ? "text-green-200"
             : trend === "down"
-            ? "text-red-200"
-            : "text-neutral-200"
+                ? "text-red-200"
+                : "text-neutral-200"
 
     const TrendIcon = trend === "up" ? ArrowUp : trend === "down" ? ArrowDown : null
 
     return (
-        <div className={`rounded-2xl shadow p-4 flex flex-col text-white transition-colors duration-300 ${bg}`}>
+        <div className={`rounded-sm shadow p-4 flex items-center justify-between text-white transition-colors duration-300 ${bg}`}>
             <div className="flex items-center justify-between">
-                <p className="text-sm opacity-80">{title}</p>
-                {IconComponent && <IconComponent className="h-5 w-5 opacity-80" />}
+                <p className="text-xl md:text-xl xl:text-3xl ">{title}</p>
+                {IconComponent && <IconComponent className="h-5 w-5 " />}
             </div>
             <div className="mt-2 flex items-center gap-2">
-                <p className="text-2xl font-bold">{value}</p>
+                <p className="text-xl md:text-xl xl:text-3xl font-bold">{value}</p>
                 {TrendIcon && <TrendIcon className={`h-4 w-4 ${trendColor}`} />}
             </div>
         </div>
