@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react"
-import { Sun, Moon, Accessibility } from "lucide-react" // ♿ icon
+import {
+    Sun,
+    Moon,
+    Funnel,
+    // ArrowsUpDown,
+    RefreshCw,
+    Info,
+    Bell
+} from "lucide-react"
 
 const Header = ({ onToggleAccessibility }) => {
     const [darkMode, setDarkMode] = useState(true)
@@ -14,9 +22,24 @@ const Header = ({ onToggleAccessibility }) => {
 
     return (
         <header className="w-full h-14 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 flex items-center justify-between px-6 transition-colors duration-300">
-            <h1 className="text-lg font-semibold text-neutral-900 dark:text-white">AppEnvolve</h1>
+            <h1 className="text-lg font-semibold text-neutral-900 dark:text-white">AppEvolve</h1>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1">
+                {/* Filter */}
+                <button className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Filter">
+                    <Funnel className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />
+                </button>
+
+                {/* Sort */}
+                {/* <button className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Sort">
+                    <ArrowsUpDown className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />
+                </button> */}
+
+                {/* Refresh */}
+                <button className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Refresh">
+                    <RefreshCw className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />
+                </button>
+
                 {/* Dark mode toggle */}
                 <button
                     onClick={() => setDarkMode(!darkMode)}
@@ -24,27 +47,20 @@ const Header = ({ onToggleAccessibility }) => {
                     aria-label="Toggle dark mode"
                 >
                     {darkMode ? (
-                        <Sun className="h-4 w-4 text-yellow-400" />
+                        <Sun className="h-5 w-5 text-yellow-400" />
                     ) : (
-                        <Moon className="h-4 w-4 text-neutral-600" />
+                        <Moon className="h-5 w-5 text-neutral-600" />
                     )}
                 </button>
 
-                {/* Accessibility toggle */}
-                <button
-                    onClick={onToggleAccessibility}
-                    className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
-                    aria-label="Accessibility options"
-                >
-                    <Accessibility className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                {/* Info */}
+                <button className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Info">
+                    <Info className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />
                 </button>
 
-                {/* Other actions */}
-                <button className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                    Settings
-                </button>
-                <button className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                    Logout
+                {/* Notifications */}
+                <button className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Notifications">
+                    <Bell className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />
                 </button>
             </div>
         </header>

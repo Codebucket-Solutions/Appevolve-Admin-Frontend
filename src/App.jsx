@@ -12,11 +12,17 @@ import Login from "./container/authContainer/login"
 import ModuleChooseContainer from "./container/moduleContainer/ModuleChoose"
 import SidebarConfig from "./components/dashboard/SidebarConfig"
 import configJson from "@/config/dashboardConfig.json"
+import Questions from "./pages/Questions"
+import Applications from "./pages/Applications"
+import AssessmentProfiles from "./pages/AssessmentProfiles"
+import Clients from "./pages/Clients"
+import Users from "./pages/Users"
+import Insights from "./pages/Insights"
 export default function App() {
   const menu = useSelector((state) => state.menu)
   const { selectedModule } = useSelector((state) => state.modules)
   const [accessibilityOpen, setAccessibilityOpen] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [configOpen, setConfigOpen] = useState(false)
   const [config, setConfig] = useState(configJson)
   useAccessibility()
@@ -43,9 +49,16 @@ export default function App() {
               onToggleAccessibility={() => setAccessibilityOpen(!accessibilityOpen)}
             />
 
-            <main className="flex-1 overflow-y-auto p-4">
+            <main className="flex-1 overflow-y-auto p-4 dark:bg-[#0c1117]">
               <Routes>
                 <Route path="/dashboard" element={<Dashboard open={configOpen} setOpen={setConfigOpen} config={config} setConfig={setConfig} />} />
+                <Route path="/questions" element={<Questions />} />
+                <Route path="/applications" element={<Applications />} />
+                <Route path="/assessments" element={<AssessmentProfiles />} />
+                <Route path="/clients" element={<Clients />} />
+                <Route path="/users" element={<Users />} />
+                <Route path="/insight" element={<Insights open={configOpen} setOpen={setConfigOpen} config={config} setConfig={setConfig} />} />
+
                 {/* <Route path="/login" element={<Login />} /> */}
               </Routes>
             </main>
@@ -60,8 +73,8 @@ export default function App() {
           />
         </div>) : (
         <div className="flex h-screen w-full bg-gray-50 dark:bg-gray-900">
-          {/* <Login /> */}
-          <ModuleChooseContainer onClickModule={() => setIsLoggedIn(true)} />
+          <Login />
+          {/* <ModuleChooseContainer onClickModule={() => setIsLoggedIn(true)} /> */}
         </div>
       )}
 
