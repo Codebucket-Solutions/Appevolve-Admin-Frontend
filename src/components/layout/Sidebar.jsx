@@ -173,7 +173,7 @@ const Sidebar = () => {
                                     <Lucide.Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
                                     <Input
                                         placeholder={header.search.placeholder || "Search"}
-                                        className="pl-8 bg-neutral-900/50 border-neutral-700 text-neutral-200 placeholder:text-neutral-400"
+                                        className="pl-8 bg-black border-neutral-700 text-white placeholder:text-white"
                                     />
                                 </div>
                             </div>
@@ -206,30 +206,52 @@ const Sidebar = () => {
             </div>
 
             {/* --- Profile --- */}
-            <div className="p-4 border-t border-neutral-800">
+            <div className="p-4 border-t border-neutral-200 dark:border-neutral-800">
                 {collapsed ? (
                     <Avatar className="h-10 w-10 mx-auto">
                         <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
                         <AvatarFallback>{modules.profile.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                 ) : (
-                    <>
-                        <div className="flex items-center gap-3">
-                            <Avatar>
+                    <div >
+                        {collapsed ? (
+                            <Avatar className="h-10 w-10 mx-auto bg-gray-100 dark:bg-neutral-700">
                                 <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
-                                <AvatarFallback>{modules.profile.name.charAt(0)}</AvatarFallback>
+                                <AvatarFallback className="text-black dark:text-white">
+                                    {modules.profile.name.charAt(0)}
+                                </AvatarFallback>
                             </Avatar>
-                            <div>
-                                <p className="text-sm font-medium">{modules.profile.name}</p>
-                                <p className="text-xs text-neutral-400">{modules.profile.email}</p>
-                            </div>
-                        </div>
-                        <Button variant="secondary" className="w-full mt-3">
-                            {modules.profile.cta}
-                        </Button>
-                    </>
+                        ) : (
+                            <>
+                                <div className="flex items-center gap-3">
+                                    <Avatar className="bg-gray-100 dark:bg-neutral-700">
+                                        <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
+                                        <AvatarFallback className="text-black dark:text-white">
+                                            {modules.profile.name.charAt(0)}
+                                        </AvatarFallback>
+                                    </Avatar>
+                                    <div>
+                                        <p className="text-sm font-medium text-black dark:text-white">
+                                            {modules.profile.name}
+                                        </p>
+                                        <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                                            {modules.profile.email}
+                                        </p>
+                                    </div>
+                                </div>
+                                <Button
+                                    variant="secondary"
+                                    className="w-full mt-3 bg-white dark:bg-white text-black dark:text-black border border-neutral-300 dark:border-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-600"
+                                >
+                                    {modules.profile.cta}
+                                </Button>
+                            </>
+                        )}
+                    </div>
+
                 )}
             </div>
+
         </div>
     );
 };

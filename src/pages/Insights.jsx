@@ -2,32 +2,22 @@ import React, { useState } from "react"
 import StatsCard from "@/components/dashboard/StatsCard"
 import Reports from "@/components/dashboard/Reports"
 import SidebarConfig from "@/components/dashboard/SidebarConfig"
+import Filters from "@/components/questions/Filters"
+import AddProfileDrawer from "@/components/questions/AddProfileDrawer"
+import { Button } from "@/components/ui/button"
 
 
-const Dashboard = (props) => {
+const Insights = (props) => {
 
-    // console.log("🚀 ~ Dashboard ~ config:", config)
+    // console.log("🚀 ~ Insights ~ config:", config)
+    const [openAddProfile, setOpenAddProfile] = useState(false)
 
     return (
         <div className="p-6 space-y-6">
             {/* Page Header */}
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                <div>
-                    <h1 className="text-3xl font-bold text-neutral-900 dark:text-white">Dashboard</h1>
-                    <p className="text-sm text-white dark:text-neutral-400">
-                        Start exploring AppEnvolve
-                    </p>
-                </div>
-                <button
-                    onClick={() => props.setOpen(true)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-                >
-                    Configure
-                </button>
-            </div>
 
             {/* Welcome / Progress Card */}
-            <div className="bg-white dark:bg-neutral-800 rounded-lg shadow p-6 transition-colors duration-300">
+            {/* <div className="bg-white dark:bg-neutral-800 rounded-lg shadow p-6 transition-colors duration-300">
                 <p className="text-2xl font-semibold text-neutral-900 dark:text-white font-poppins">
                     Welcome, Amrit
                 </p>
@@ -38,7 +28,34 @@ const Dashboard = (props) => {
                     <div className="bg-blue-600 h-2 rounded" style={{ width: "30%" }}></div>
                 </div>
                 <p className="text-xs text-black dark:text-white mt-1">30%</p>
+            </div> */}
+
+            <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-lg p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
+                {/* Top Section */}
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                    {/* Title */}
+                    <div className="flex flex-col gap-2">
+                        {/* <h2 className="text-3xl font-bold">3</h2> */}
+                        <h2 className="text-3xl">Insights</h2>
+                        <p className="text-sm text-gray-600 dark:text-white max-w-xl">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="flex items-center gap-3">
+                        <Button
+                            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm font-medium text-white"
+                            onClick={() => setOpenAddProfile(true)}
+                        >
+                            Configure
+                        </Button>
+                    </div>
+                </div>
             </div>
+
+            <Filters />
 
             {/* Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -69,8 +86,9 @@ const Dashboard = (props) => {
                 config={config}
                 setConfig={setConfig}
             /> */}
+            <AddProfileDrawer title="Add Insight" open={openAddProfile} setOpen={setOpenAddProfile} />
         </div>
     )
 }
 
-export default Dashboard
+export default Insights
