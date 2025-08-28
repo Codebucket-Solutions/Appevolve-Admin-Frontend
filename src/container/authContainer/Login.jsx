@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 
 
 
-const Login = () => {
+const Login = ({ onLogin }) => {
     return (
         <div className="flex w-full h-screen">
             {/* Left Container: Login Section */}
@@ -18,7 +18,7 @@ const Login = () => {
                 <h1 className="text-3xl font-semibold text-white mb-2">Welcome Admin</h1>
                 <p className="text-white mb-8">Enter your email and password to access your account</p>
 
-                <form className="w-full">
+                <form className="w-full" onSubmit={onLogin}>
                     <div className="mb-6">
                         <label htmlFor="email" className="block text-white text-sm font-medium mb-2">Email *</label>
                         <Input
