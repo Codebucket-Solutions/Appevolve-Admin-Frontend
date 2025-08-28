@@ -22,7 +22,7 @@ const SortableItem = ({ id, label, checked, onToggle }) => {
             style={style}
             {...attributes}
             {...listeners}
-            className="flex items-center justify-between bg-neutral-800 border border-neutral-700 p-3 rounded-xl mb-3 cursor-grab hover:bg-neutral-700 transition-colors"
+            className="flex items-center justify-between dark:bg-[#151515] dark:text-white text-black border border-border p-3 rounded-xl mb-3 cursor-grab hover:bg-neutral-300 transition-colors"
         >
 
 
@@ -30,12 +30,12 @@ const SortableItem = ({ id, label, checked, onToggle }) => {
             <div className="flex items-center gap-3">
 
                 <div className="flex gap-1 mr-2">
-                    <div className="flex flex-col justify-center text-neutral-400">
+                    <div className="flex flex-col justify-center text-black">
                         <span className="block w-1 h-1 bg-neutral-500 rounded-full mb-1"></span>
                         <span className="block w-1 h-1 bg-neutral-500 rounded-full mb-1"></span>
                         <span className="block w-1 h-1 bg-neutral-500 rounded-full"></span>
                     </div>
-                    <div className="flex flex-col justify-center text-neutral-400">
+                    <div className="flex flex-col justify-center text-black">
                         <span className="block w-1 h-1 bg-neutral-500 rounded-full mb-1"></span>
                         <span className="block w-1 h-1 bg-neutral-500 rounded-full mb-1"></span>
                         <span className="block w-1 h-1 bg-neutral-500 rounded-full"></span>
@@ -50,7 +50,7 @@ const SortableItem = ({ id, label, checked, onToggle }) => {
                     onClick={(e) => e.stopPropagation()}
                     className="w-5 h-5 cursor-pointer accent-indigo-500"
                 />
-                <span className="text-neutral-100 font-medium">{label}</span>
+                <span className="text-black dark:text-white font-medium">{label}</span>
             </div>
 
 
