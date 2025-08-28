@@ -18,7 +18,7 @@ const Insights = (props) => {
 
             {/* Welcome / Progress Card */}
             {/* <div className="bg-white dark:bg-neutral-800 rounded-lg shadow p-6 transition-colors duration-300">
-                <p className="text-2xl font-semibold text-neutral-900 dark:text-white font-poppins">
+                <p className="text-2xl font-semibold text-black dark:text-white font-poppins">
                     Welcome, Amrit
                 </p>
                 <p className="text-sm text-black dark:text-white mt-1 mb-4">
@@ -30,7 +30,7 @@ const Insights = (props) => {
                 <p className="text-xs text-black dark:text-white mt-1">30%</p>
             </div> */}
 
-            <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-lg p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
+            <div className="bg-white dark:bg-[#151515] rounded-xl p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
                 {/* Top Section */}
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                     {/* Title */}
@@ -68,7 +68,7 @@ const Insights = (props) => {
 
             {/* Reports / Statistics Grid */}
             <div>
-                <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
+                <h2 className="text-xl font-semibold text-black dark:text-white mb-2">
                     Statistics and Reports
                 </h2>
             </div>

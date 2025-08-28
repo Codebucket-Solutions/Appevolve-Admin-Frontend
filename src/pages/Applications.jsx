@@ -19,15 +19,30 @@ const Applications = () => {
                     checked={table.getIsAllPageRowsSelected()}
                     onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
                     aria-label="Select all"
-                    className="border-gray-400 dark:border-gray-600 bg-white dark:bg-black"
+                    className="
+                   border-gray-400 dark:border-gray-600
+                   bg-white dark:bg-black
+                   text-black dark:text-black
+                   data-[state=checked]:bg-blue-500
+                   data-[state=checked]:border-blue-500
+                   data-[state=checked]:text-white
+                 "
                 />
+
             ),
             cell: ({ row }) => (
                 <Checkbox
                     checked={row.getIsSelected()}
                     onCheckedChange={(value) => row.toggleSelected(!!value)}
                     aria-label="Select row"
-                    className="border-gray-400 dark:border-gray-600 bg-white dark:bg-black"
+                    className="
+                   border-gray-400 dark:border-gray-600
+                   bg-white dark:bg-black
+                   text-black dark:text-black
+                   data-[state=checked]:bg-blue-500
+                   data-[state=checked]:border-blue-500
+                   data-[state=checked]:text-white
+                 "
                 />
             ),
             enableSorting: false,
@@ -114,14 +129,14 @@ const Applications = () => {
     ]
 
     return (
-        <div className="flex h-screen bg-white dark:bg-black text-black dark:text-white">
+        <div className="flex h-screen ">
             {/* Main Content */}
             <div
                 className={`flex flex-col gap-6 p-6 transition-all duration-300 overflow-x-hidden
           ${openAddProfile ? "w-[calc(100%-500px)]" : "w-full"}`}
             >
                 {/* Card Container */}
-                <div className="bg-white dark:bg-black rounded-xl shadow-lg p-6 flex flex-col gap-6 border border-gray-300 dark:border-gray-600">
+                <div className="bg-white dark:bg-[#151515] rounded-xl p-6 flex flex-col gap-6 border border-gray-300 dark:border-[#323338]">
                     {/* Top Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                         {/* Title */}

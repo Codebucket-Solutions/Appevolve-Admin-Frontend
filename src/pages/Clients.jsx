@@ -94,14 +94,14 @@ const Clients = () => {
 
 
     return (
-        <div className="flex h-screen bg-white dark:bg-black text-black dark:text-white">
+        <div className="flex h-screen ">
             {/* Main Content */}
             <div
                 className={`flex flex-col gap-6 p-6 transition-all duration-300 overflow-x-hidden
           ${openAddProfile ? "w-[calc(100%-500px)]" : "w-full"}`}
             >
                 {/* Card Container */}
-                <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-lg p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
+                <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
                     {/* Top Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                         {/* Title */}

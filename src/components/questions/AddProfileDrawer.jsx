@@ -25,18 +25,18 @@ export default function AddProfileDrawer({ open, setOpen, title }) {
 
     return (
         <div
-            className={`fixed top-18 right-0 transform transition-all duration-300
+            className={`fixed top-[3.8rem] right-0 transform transition-all duration-300 border-[#D5D5D5] dark:border-[#323338] border-l
                 ${open
-                    ? "translate-x-0 w-[400px] md:w-[500px] lg:w-[520px] h-[calc(100vh-4.5rem)] px-8 pt-8 border-l-2"
+                    ? "translate-x-0 w-[400px] md:w-[500px] lg:w-[520px] h-[calc(100vh-3.5rem)] px-8 pt-8"
                     : "translate-x-full w-0 h-0 p-0 border-0 overflow-hidden"
-                } bg-white text-black dark:bg-black dark:text-white shadow-xl`}
+                } bg-white text-black dark:bg-[#111111] dark:text-white shadow-xl`}
         >
             <div className="flex flex-col h-full">
                 {/* Header */}
-                <div className="flex justify-between items-center border-b border-neutral-300 dark:border-neutral-800 pb-4 mb-4">
+                <div className="flex justify-between items-center border-neutral-300 dark:border-neutral-800 pb-4 mb-4">
                     <div>
                         <h2 className="text-lg font-semibold">{title}</h2>
-                        <p className="text-sm text-neutral-700 dark:text-neutral-400">
+                        <p className="text-sm text-neutral-700 dark:text-white">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
@@ -49,18 +49,24 @@ export default function AddProfileDrawer({ open, setOpen, title }) {
                     <div className="mt-4 space-y-4">
                         {activeTab === "basic" && (
                             <>
-                                <div>
-                                    <label className="text-sm font-medium">Tag *</label>
-                                    <Input placeholder="Enter Tag" className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400" />
+                                {/* Tag */}
+                                <div className="flex flex-col gap-1">
+                                    <label className="text-sm font-medium">
+                                        Tag <span className="text-red-500">*</span>
+                                    </label>
+                                    <Input placeholder="Enter Tag" className="bg-neutral-100 rounded-md text-black placeholder:text-neutral-500 dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]" />
                                 </div>
 
-                                <div className="w-full">
-                                    <label className="text-sm font-medium">APH Criteria Level 1 *</label>
+                                {/* APH Criteria */}
+                                <div className="flex flex-col gap-1">
+                                    <label className="text-sm font-medium">
+                                        APH Criteria Level 1 <span className="text-red-500">*</span>
+                                    </label>
                                     <Select className="w-full">
-                                        <SelectTrigger className="w-full bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400">
+                                        <SelectTrigger className="w-full bg-neutral-100 text-black dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]">
                                             <SelectValue placeholder="Select" />
                                         </SelectTrigger>
-                                        <SelectContent>
+                                        <SelectContent className="w-full bg-neutral-100 text-black dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]">
                                             <SelectItem value="beginner">Beginner</SelectItem>
                                             <SelectItem value="intermediate">Intermediate</SelectItem>
                                             <SelectItem value="advanced">Advanced</SelectItem>
@@ -68,31 +74,38 @@ export default function AddProfileDrawer({ open, setOpen, title }) {
                                     </Select>
                                 </div>
 
-                                <div>
-                                    <label className="text-sm font-medium">Domain *</label>
+                                {/* Domain */}
+                                <div className="flex flex-col gap-1">
+                                    <label className="text-sm font-medium">
+                                        Domain <span className="text-red-500">*</span>
+                                    </label>
                                     <Input
                                         placeholder="Enter Domain"
                                         value={domain}
                                         onChange={(e) => setDomain(e.target.value)}
                                         onKeyDown={(e) => handleKeyDown(e, "domain")}
-                                        className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400"
+                                        className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]"
                                     />
                                 </div>
 
-                                <div>
-                                    <label className="text-sm font-medium">Topic *</label>
+                                {/* Topic */}
+                                <div className="flex flex-col gap-1">
+                                    <label className="text-sm font-medium">
+                                        Topic <span className="text-red-500">*</span>
+                                    </label>
                                     <Input
                                         placeholder="Enter Topic"
                                         value={topic}
                                         onChange={(e) => setTopic(e.target.value)}
                                         onKeyDown={(e) => handleKeyDown(e, "topic")}
-                                        className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400"
+                                        className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]"
                                     />
                                 </div>
 
+                                {/* Tags list */}
                                 {tags.length > 0 && (
                                     <div className="mt-4">
-                                        <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">Selected:</p>
+                                        <p className="text-sm text-neutral-500 dark:text-white mb-2">Selected:</p>
                                         <div className="flex flex-wrap gap-2">
                                             {tags.map((tag, index) => (
                                                 <span
@@ -102,7 +115,7 @@ export default function AddProfileDrawer({ open, setOpen, title }) {
                                                     {tag.type}: {tag.value}
                                                     <button
                                                         onClick={() => setTags(tags.filter((_, i) => i !== index))}
-                                                        className="ml-2 text-neutral-600 hover:text-red-600 dark:text-neutral-400 dark:hover:text-red-400"
+                                                        className="ml-2 text-black hover:text-red-600 dark:text-white dark:hover:text-red-400"
                                                     >
                                                         ✕
                                                     </button>
@@ -116,21 +129,28 @@ export default function AddProfileDrawer({ open, setOpen, title }) {
 
                         {activeTab === "questions" && (
                             <>
-                                <div>
-                                    <label className="text-sm font-medium">Question *</label>
-                                    <Input placeholder="Enter Question" className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400" />
+                                {/* Question */}
+                                <div className="flex flex-col gap-1">
+                                    <label className="text-sm font-medium">
+                                        Question <span className="text-red-500">*</span>
+                                    </label>
+                                    <Input placeholder="Enter Question" className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]" />
                                 </div>
-                                <div>
-                                    <label className="text-sm font-medium">Answer *</label>
-                                    <Input placeholder="Enter Answer" className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400" />
+
+                                {/* Answer */}
+                                <div className="flex flex-col gap-1">
+                                    <label className="text-sm font-medium">
+                                        Answer <span className="text-red-500">*</span>
+                                    </label>
+                                    <Input placeholder="Enter Answer" className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]" />
                                 </div>
                             </>
                         )}
 
                         {activeTab === "additional" && (
-                            <div>
+                            <div className="flex flex-col gap-1">
                                 <label className="text-sm font-medium">Notes</label>
-                                <Input placeholder="Optional notes" className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400" />
+                                <Input placeholder="Optional notes" className="bg-neutral-100 text-black placeholder:text-neutral-500 dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]" />
                             </div>
                         )}
                     </div>

@@ -94,21 +94,21 @@ const Users = () => {
 
 
     return (
-        <div className="flex h-screen bg-white dark:bg-black text-black dark:text-white">
+        <div className="flex h-screen  dark:text-white">
             {/* Main Content */}
             <div
                 className={`flex flex-col gap-6 p-6 transition-all duration-300 overflow-x-hidden
           ${openAddProfile ? "w-[calc(100%-500px)]" : "w-full"}`}
             >
                 {/* Card Container */}
-                <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-lg p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
+                <div className="bg-white dark:bg-[#151515] rounded-xl p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
                     {/* Top Section */}
                     <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                         {/* Title */}
                         <div className="flex flex-col gap-2">
                             <h2 className="text-3xl font-bold">3</h2>
                             <h2 className="text-3xl">Users</h2>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xl">
+                            <p className="text-sm text-gray-600 dark:text-white max-w-xl">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             </p>
@@ -139,7 +139,7 @@ const Users = () => {
                     onPageChange={(page) =>
                         setPagination((prev) => ({ ...prev, pageIndex: page }))
                     }
-                    className="bg-white dark:bg-neutral-900 text-black dark:text-white border border-gray-300 dark:border-neutral-800 rounded-lg"
+                    className="bg-white dark:bg-[#151515] text-black dark:text-white border border-gray-300 dark:border-neutral-800 rounded-lg"
                 />
             </div>
 
