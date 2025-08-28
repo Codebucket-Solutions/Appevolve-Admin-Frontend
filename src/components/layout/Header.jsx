@@ -55,7 +55,7 @@ const Header = ({ onToggleAccessibility }) => {
 
                 {/* Info */}
                 <button className="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Info">
-                    <Info className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />
+                    <Info onClick={onToggleAccessibility} className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />
                 </button>
 
                 {/* Notifications */}
