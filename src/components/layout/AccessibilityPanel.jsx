@@ -69,7 +69,7 @@ const AccessibilityPanel = ({ open, setOpen }) => {
                 <button
                   key={i}
                   onClick={t.onClick}
-                  className={`flex flex-col items-center justify-center p-4 rounded-xl shadow-sm border transition-all
+                  className={`flex flex-col items-center justify-center p-4 rounded-[4px] shadow-sm border transition-all
                     ${t.active
                       ? "bg-blue-600 text-white border-blue-500"
                       : "bg-white hover:bg-neutral-100 text-neutral-800 border-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:border-neutral-700"

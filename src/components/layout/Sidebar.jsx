@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { toggleSidebar } from "@/store/layoutSlice"
 import * as Lucide from "lucide-react"
 import logo from "../../assets/logos/logo_sidebar.png"
+import LogoutButton from "@/container/authContainer/Logout"
 
 const LIcon = ({ name, className }) => {
     const Cmp = Lucide[name]
@@ -173,7 +174,7 @@ const Sidebar = () => {
                 {header.search?.enabled && (
                     <div className="mt-3">
                         {collapsed ? (
-                            <button className="p-2 border-1 border-[#676879] hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-xl">
+                            <button className="p-2 border-1 border-[#676879] hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-[4px]">
                                 <Lucide.Search className="h-5 w-5 dark:text-[#676879] text-black" />
                             </button>
 
@@ -183,7 +184,7 @@ const Sidebar = () => {
                                 <Lucide.Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-black dark:text-[#676879]" />
                                 <Input
                                     placeholder={header.search.placeholder || "Search"}
-                                    className="pl-8 w-full bg-neutral-100 text-black dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879] rounded-md"
+                                    className="pl-8 w-full bg-neutral-100 text-black dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879] rounded-[4px]"
                                 />
                             </div>
                         )}
@@ -217,51 +218,55 @@ const Sidebar = () => {
             </div>
 
             {/* --- Profile --- */}
+            {/* --- Profile --- */}
             <div className="p-4 border-t border-neutral-200 dark:border-neutral-800">
                 {collapsed ? (
-                    <Avatar className="h-10 w-10 mx-auto">
-                        <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
-                        <AvatarFallback>{modules.profile.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
+                    <button
+                        // onClick={() => dispatch(logout())}
+                        className="block mx-auto"
+                    >
+                        <Avatar className="h-10 w-10">
+                            <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
+                            <AvatarFallback>{modules.profile.name.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                    </button>
                 ) : (
-                    <div >
-                        {collapsed ? (
-                            <Avatar className="h-10 w-10 mx-auto bg-gray-100 dark:bg-neutral-700">
+                    <div>
+                        <button
+                            className="w-full flex items-center gap-3 text-left p-2 rounded-[4px] transition"
+                        >
+                            <Avatar className="bg-gray-100 dark:bg-neutral-700">
                                 <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
                                 <AvatarFallback className="text-black dark:text-white">
                                     {modules.profile.name.charAt(0)}
                                 </AvatarFallback>
                             </Avatar>
-                        ) : (
-                            <>
-                                <div className="flex items-center gap-3">
-                                    <Avatar className="bg-gray-100 dark:bg-neutral-700">
-                                        <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
-                                        <AvatarFallback className="text-black dark:text-white">
-                                            {modules.profile.name.charAt(0)}
-                                        </AvatarFallback>
-                                    </Avatar>
-                                    <div>
-                                        <p className="text-sm font-medium text-black dark:text-white">
-                                            {modules.profile.name}
-                                        </p>
-                                        <p className="text-xs text-black dark:text-white">
-                                            {modules.profile.email}
-                                        </p>
-                                    </div>
-                                </div>
-                                <Button
-                                    variant="secondary"
-                                    className="w-full mt-3 bg-white dark:bg-white text-black dark:text-black border border-neutral-300 dark:border-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-600"
-                                >
-                                    {modules.profile.cta}
-                                </Button>
-                            </>
-                        )}
-                    </div>
+                            <div className="">
+                                <p className="text-sm font-medium text-black dark:text-white">
+                                    {modules.profile.name}
+                                </p>
+                                <p className="text-xs text-black dark:text-white">
+                                    {modules.profile.email}
+                                </p>
 
+                            </div>
+                            <div className="mt-auto">
+                                <LogoutButton />
+                            </div>
+                        </button>
+
+
+                        <Button
+                            variant="secondary"
+                            className="w-full mt-3 bg-white dark:bg-white text-black dark:text-black border border-neutral-300 dark:border-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-600"
+                        >
+                            {modules.profile.cta}
+                        </Button>
+
+                    </div>
                 )}
             </div>
+
 
         </div>
     );

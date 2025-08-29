@@ -43,14 +43,15 @@ const SidebarConfig = ({ open, setOpen, config, setConfig }) => {
 
     return (
         <div
-            className={`min-h-[calc(100vh-20vh)] dark:bg-[#111111] text-black dark:text-white border-neutral-700
-  transition-all duration-300 ease-in-out overflow-hidden
-  ${open ? "w-[20vw] min-w-[350px] border-border border-l" : "w-0"}`}
+            className={`fixed right-0 top-[3.8rem] h-[calc(100vh-3.8rem)] dark:bg-[#111111] text-black dark:text-white 
+    transition-all duration-300 ease-in-out overflow-hidden
+    ${open ? "w-[20vw] min-w-[350px] border-l border-[#B5B5B5] dark:border-[#323338]" : "w-0"}`}
         >
             <div
                 className={`flex flex-col h-full transition-opacity duration-200
-                    ${open ? "opacity-100 delay-150" : "opacity-0"}`}
+      ${open ? "opacity-100 delay-150" : "opacity-0"}`}
             >
+
                 {/* Header */}
                 <div className="p-4 flex flex-col gap-1">
                     <div className="flex justify-between items-center">
@@ -106,9 +107,7 @@ const SidebarConfig = ({ open, setOpen, config, setConfig }) => {
                                             setConfig({
                                                 ...config,
                                                 stats: config.stats.map((s) =>
-                                                    s.id === c.id
-                                                        ? { ...s, visible: !s.visible }
-                                                        : s
+                                                    s.id === c.id ? { ...s, visible: !s.visible } : s
                                                 ),
                                             })
                                         }
@@ -138,9 +137,7 @@ const SidebarConfig = ({ open, setOpen, config, setConfig }) => {
                                             setConfig({
                                                 ...config,
                                                 reports: config.reports.map((rep) =>
-                                                    rep.id === r.id
-                                                        ? { ...rep, visible: !rep.visible }
-                                                        : rep
+                                                    rep.id === r.id ? { ...rep, visible: !rep.visible } : rep
                                                 ),
                                             })
                                         }

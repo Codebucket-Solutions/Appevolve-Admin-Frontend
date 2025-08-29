@@ -87,6 +87,7 @@ export default function App() {
             />
             <main className="flex-1 overflow-y-auto dark:bg-[#0c1117]">
               <Routes>
+                <Route path="/*" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/questions" element={<Questions />} />
                 <Route path="/applications" element={<Applications />} />

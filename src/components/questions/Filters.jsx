@@ -36,7 +36,7 @@ const Filters = () => {
     }
 
     return (
-        <div className="bg-white dark:bg-[#151515] rounded-xl shadow p-6 flex flex-col gap-3 border border-gray-200 dark:border-neutral-800 text-black dark:text-white">
+        <div className="bg-white dark:bg-[#151515] rounded-[4px] shadow p-6 flex flex-col gap-3 border border-gray-200 dark:border-neutral-800 text-black dark:text-white">
             <h3 className="text-lg font-semibold">Filters</h3>
 
             {/* Filter pills */}
