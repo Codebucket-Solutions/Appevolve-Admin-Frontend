@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import Sidebar from "@/components/layout/Sidebar"
 import Header from "@/components/layout/Header"
@@ -17,10 +17,13 @@ import AssessmentProfiles from "./pages/AssessmentProfiles"
 import Clients from "./pages/Clients"
 import Users from "./pages/Users"
 import Insights from "./pages/Insights"
+import { setModule } from "./store/moduleSlice"
 
 export default function App() {
   const menu = useSelector((state) => state.menu)
+  const dispatch = useDispatch()
   const { selectedModule } = useSelector((state) => state.modules)
+  console.log("🚀 ~ App ~ selectedModule:", selectedModule)
 
   const [accessibilityOpen, setAccessibilityOpen] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -39,10 +42,14 @@ export default function App() {
   }, [isLoggedIn])
 
   useEffect(() => {
-    if (localModule) localStorage.setItem("selectedModule", localModule)
+    if (localModule) {
+      dispatch(setModule(localModule))
+      localStorage.setItem("selectedModule", localModule)
+    }
   }, [localModule])
 
   const handleModuleChoose = (module) => {
+    console.log("🚀 ~ handleModuleChoose ~ module:", module)
     setLocalModule(module)
   }
 

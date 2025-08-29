@@ -91,9 +91,11 @@ const SidebarItem = ({ item, depth = 0, openItems, toggleItem }) => {
 
 const Sidebar = ({ handleLogout }) => {
     const { openItems, toggleItem } = useSidebar();
+    const { selectedModule } = useSelector((state) => state.modules);
     const dispatch = useDispatch();
     const collapsed = useSelector((s) => s.layout.collapsed);
-    const [selectedHeader, setSelectedHeader] = useState(modules.moduleHeader[0]);
+    console.log(modules.moduleHeader)
+    const [selectedHeader, setSelectedHeader] = useState(modules.moduleHeader.find((h) => h.title === selectedModule) || modules.moduleHeader[0]);
     const header = selectedHeader;
 
     return (
@@ -131,9 +133,12 @@ const Sidebar = ({ handleLogout }) => {
                         >
                             {header.initial || "S"}
                         </div>
-                        {!collapsed && (
-                            <span className="dark:text-white text-black">{header.label}</span>
-                        )}
+                        {/* {!collapsed ? (
+                            <span className="dark:text-white text-black">
+                                {header.label.charAt(0)}
+                            </span>
+                        ) : null} */}
+
                     </div>
                     {!collapsed && (
                         <select

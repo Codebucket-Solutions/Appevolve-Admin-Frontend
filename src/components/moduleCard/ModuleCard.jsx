@@ -2,7 +2,7 @@ import React from 'react';
 
 const ModuleCard = ({ imageUrl, title, description, submenus, badgeColor, badgeText, onClickModule }) => {
     return (
-        <div className="rounded-[4px] shadow-md border border-[#323338] max-h-fit bg-black" onClick={onClickModule}>
+        <div className="rounded-[4px] shadow-md border border-[#323338] max-h-fit bg-black" onClick={() => onClickModule(title)}>
             <div className="relative">
                 <img src={imageUrl} alt={title} className="w-full h-auto rounded-sm" />
                 {/* {badgeText && (
