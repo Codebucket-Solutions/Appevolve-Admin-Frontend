@@ -9,7 +9,9 @@ import { Link, useLocation } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleSidebar } from "@/store/layoutSlice"
 import * as Lucide from "lucide-react"
-import logo from "../../assets/logos/logo_sidebar.png"
+// import logo from "../../assets/logos/logo_sidebar.png"
+import logo from '../../assets/logos/rect_logo.png'
+
 import LogoutButton from "@/container/authContainer/Logout"
 
 const LIcon = ({ name, className }) => {
@@ -102,7 +104,7 @@ const Sidebar = () => {
             <div className="flex items-center justify-between p-4 border-b border-neutral-300 dark:border-neutral-800">
                 {!collapsed && (
                     <span className="text-lg font-bold text-black dark:text-white">
-                        <img src={logo} alt="Logo" className="inline h-6 w-6 mr-2" />
+                        <img src={logo} alt="Logo" className="inline h-4 mr-2" />
                     </span>
                 )}
                 <button
