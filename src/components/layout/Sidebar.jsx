@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { use, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
@@ -95,8 +95,12 @@ const Sidebar = ({ handleLogout }) => {
     const dispatch = useDispatch();
     const collapsed = useSelector((s) => s.layout.collapsed);
     console.log(modules.moduleHeader)
-    const [selectedHeader, setSelectedHeader] = useState(modules.moduleHeader.find((h) => h.title === selectedModule) || modules.moduleHeader[0]);
+    const [selectedHeader, setSelectedHeader] = useState({});
     const header = selectedHeader;
+
+    useEffect(() => {
+        setSelectedHeader(modules.moduleHeader.find((h) => h?.label === selectedModule));
+    }, [modules.moduleHeader, selectedModule]);
 
     return (
         <div
@@ -126,12 +130,12 @@ const Sidebar = ({ handleLogout }) => {
                         <div
                             className={`h-6 w-6 rounded grid place-items-center text-xs font-bold `}
                             style={{
-                                backgroundColor: header.color || "#f97316",
+                                backgroundColor: header?.color || "#f97316",
                                 color: "#111",
                             }}
                             aria-hidden
                         >
-                            {header.initial || "S"}
+                            {header?.initial || "S"}
                         </div>
                         {/* {!collapsed ? (
                             <span className="dark:text-white text-black">
@@ -143,7 +147,7 @@ const Sidebar = ({ handleLogout }) => {
                     {!collapsed && (
                         <select
                             className="bg-transparent text-black dark:text-white text-sm focus:outline-none  font-figtree"
-                            value={header.label}
+                            value={header?.label}
                             onChange={(e) => {
                                 const selected = modules.moduleHeader.find((h) => h.label === e.target.value);
                                 if (selected) {
@@ -162,7 +166,7 @@ const Sidebar = ({ handleLogout }) => {
 
                 {/* quick links */}
                 <div className="mt-4 space-y-3 font-figtree">
-                    {header.actions?.map((a) => (
+                    {header?.actions?.map((a) => (
                         <Link
                             key={a.label}
                             to={a.route}
@@ -178,7 +182,7 @@ const Sidebar = ({ handleLogout }) => {
                 </div>
 
                 {/* search */}
-                {header.search?.enabled && (
+                {header?.search?.enabled && (
                     <div className="mt-3">
                         {collapsed ? (
                             <button className="p-2 border-1 border-[#676879] hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-[4px]">
