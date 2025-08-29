@@ -15,13 +15,10 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 
-export default function LogoutButton() {
+export default function LogoutButton({ handleLogout }) {
     const [open, setOpen] = useState(false)
 
-    const handleLogout = () => {
-        console.log("User logged out")
-        setOpen(false)
-    }
+
 
     return (
         <AlertDialog open={open} onOpenChange={setOpen}>

@@ -89,7 +89,7 @@ const SidebarItem = ({ item, depth = 0, openItems, toggleItem }) => {
     );
 };
 
-const Sidebar = () => {
+const Sidebar = ({ handleLogout }) => {
     const { openItems, toggleItem } = useSidebar();
     const dispatch = useDispatch();
     const collapsed = useSelector((s) => s.layout.collapsed);
@@ -219,8 +219,6 @@ const Sidebar = () => {
                 ))}
             </div>
 
-            {/* --- Profile --- */}
-            {/* --- Profile --- */}
             <div className="p-4 border-t border-neutral-200 dark:border-neutral-800">
                 {collapsed ? (
                     <button
@@ -253,7 +251,7 @@ const Sidebar = () => {
 
                             </div>
                             <div className="mt-auto">
-                                <LogoutButton />
+                                <LogoutButton handleLogout={handleLogout} />
                             </div>
                         </button>
 

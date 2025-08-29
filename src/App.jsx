@@ -75,6 +75,7 @@ export default function App() {
             style={{ width: "250px" }}
             menu={menu}
             selectedModule={localModule}
+            handleLogout={handleLogout}
           />
           <div
             className={`flex flex-col transition-all duration-300 ${accessibilityOpen ? "flex-[75vw]" : configOpen ? "flex-[75vw]" : "flex-1"
