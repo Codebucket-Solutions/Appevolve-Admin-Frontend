@@ -10,6 +10,9 @@ export default {
                 poppins: ["Poppins", "sans-serif"],
                 figtree: ["Figtree", "sans-serif"],
             },
+            height: {
+                'screen-header': 'calc(100vh - 3.8rem)',
+            },
             colors: {
                 primary: "#151515",
                 secondary: "#0D1117",

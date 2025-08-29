@@ -1,8 +1,8 @@
 {
     "moduleHeader": [
         {
-            "label": "Module 1",
-            "initial": "S",
+            "label": "Assessment Engine",
+            "initial": "A",
             "color": "#f97316",
             "actions": [
                 {
@@ -22,8 +22,8 @@
             }
         },
         {
-            "label": "Module 2",
-            "initial": "M",
+            "label": "Design Engine",
+            "initial": "D",
             "color": "#06b6d4",
             "actions": [
                 {
@@ -43,8 +43,8 @@
             }
         },
         {
-            "label": "Module 3",
-            "initial": "A",
+            "label": "Code Maestro",
+            "initial": "C",
             "color": "#10b981",
             "actions": [
                 {

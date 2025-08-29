@@ -54,7 +54,7 @@ export default function AddProfileDrawer({ open, setOpen, title }) {
                                     <label className="text-sm font-medium">
                                         Tag <span className="text-red-500">*</span>
                                     </label>
-                                    <Input placeholder="Enter Tag" className="bg-neutral-100 rounded-md text-black placeholder:text-neutral-500 dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]" />
+                                    <Input placeholder="Enter Tag" className="bg-neutral-100 rounded-[4px] text-black placeholder:text-neutral-500 dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879]" />
                                 </div>
 
                                 {/* APH Criteria */}
@@ -110,7 +110,7 @@ export default function AddProfileDrawer({ open, setOpen, title }) {
                                             {tags.map((tag, index) => (
                                                 <span
                                                     key={index}
-                                                    className="flex items-center gap-1 px-3 py-1 rounded-md text-sm border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-800"
+                                                    className="flex items-center gap-1 px-3 py-1 rounded-[4px] text-sm border border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-800"
                                                 >
                                                     {tag.type}: {tag.value}
                                                     <button

@@ -5,6 +5,7 @@ import AddProfileDrawer from "@/components/questions/AddProfileDrawer"
 import DataTable from "@/components/common/DataTable"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
+import InfoCard from "@/components/common/InfoCard"
 
 const Clients = () => {
     const [openAddProfile, setOpenAddProfile] = useState(false)
@@ -101,30 +102,18 @@ const Clients = () => {
           ${openAddProfile ? "w-[calc(100%-500px)]" : "w-full"}`}
             >
                 {/* Card Container */}
-                <div className="bg-white dark:bg-neutral-900 rounded-xl p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
-                    {/* Top Section */}
-                    <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
-                        {/* Title */}
-                        <div className="flex flex-col gap-2">
-                            <h2 className="text-3xl font-bold">3</h2>
-                            <h2 className="text-3xl">Clients</h2>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xl">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                        </div>
+                <InfoCard
+                    count={3}
+                    title="Clients"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    cta={{
+                        label: "Add Clients",
+                        onClick: () => setOpenAddProfile(true),
+                        className:
+                            "px-4 py-2 bg-[#0073EA] hover:bg-blue-700 text-sm font-medium text-white",
+                    }}
+                />
 
-                        {/* CTA Button */}
-                        <div className="flex items-center gap-3">
-                            <Button
-                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm font-medium text-white"
-                                onClick={() => setOpenAddProfile(true)}
-                            >
-                                Add Clients
-                            </Button>
-                        </div>
-                    </div>
-                </div>
 
                 {/* <Filters /> */}
 

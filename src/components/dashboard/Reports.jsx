@@ -26,7 +26,7 @@ const UserReports = ({
     const totalUsers = 3;
 
     return (
-        <div className="bg-white dark:bg-[#151515] text-black dark:text-white rounded-lgborder border-[#C8C8C8] dark:border-[#323338] transition-colors duration-300">
+        <div className="bg-white dark:bg-[#151515] text-black dark:text-white rounded-[4px] border border-[#C8C8C8] dark:border-[#323338] transition-colors duration-300">
 
             <div className="flex items-start justify-between mb-4 p-4">
                 <div>
@@ -35,8 +35,8 @@ const UserReports = ({
                         {subtitle}
                     </p>
                 </div>
-                <div className="bg-neutral-100 dark:bg-[#323338] p-2 rounded-full cursor-pointer">
-                    <LIcon name="Users" size={24} className="text-black dark:text-white" />
+                <div className="bg-neutral-100 dark:bg-white p-2 rounded-full cursor-pointer">
+                    <LIcon name="Users" size={24} className="text-black dark:text-black p-1" />
                 </div>
             </div>
 

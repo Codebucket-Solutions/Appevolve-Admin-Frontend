@@ -79,7 +79,7 @@ const Header = ({ onToggleAccessibility }) => {
 
                             <div
                                 className="px-3 py-2 rounded cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700"
-                                onClick={onToggleAccessibility}
+                                onClick={() => { onToggleAccessibility(); setMenuOpen(false); }}
                             >
                                 Accessibility Setting
                             </div>

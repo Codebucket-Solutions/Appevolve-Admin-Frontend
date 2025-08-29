@@ -56,7 +56,7 @@ export default function DataTable({
             )}
 
             {/* 📊 Table */}
-            <div className="rounded-md border border-[#B5B5B5] dark:border-[#676879]">
+            <div className="rounded-[4px] border border-[#B5B5B5] dark:border-[#676879]">
                 <Table>
                     <TableHeader className="bg-neutral-900">
                         {table.getHeaderGroups().map((headerGroup) => (

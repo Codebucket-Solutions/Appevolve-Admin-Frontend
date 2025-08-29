@@ -5,6 +5,7 @@ import SidebarConfig from "@/components/dashboard/SidebarConfig"
 import Filters from "@/components/questions/Filters"
 import AddProfileDrawer from "@/components/questions/AddProfileDrawer"
 import { Button } from "@/components/ui/button"
+import InfoCard from "@/components/common/InfoCard"
 
 
 const Insights = (props) => {
@@ -29,64 +30,56 @@ const Insights = (props) => {
                 </div>
                 <p className="text-xs text-black dark:text-white mt-1">30%</p>
             </div> */}
+            <div
+                className={`flex flex-col gap-6 p-6 transition-all duration-300 overflow-x-hidden
+          ${openAddProfile ? "w-[calc(100%-500px)]" : "w-full"}`}
+            >
+                <InfoCard
+                    title="Insights"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    cta={{
+                        label: "Configure",
+                        onClick: () => setOpenAddProfile(true),
+                        className:
+                            "px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm font-medium text-white",
+                    }}
+                />
 
-            <div className="bg-white dark:bg-[#151515] rounded-xl p-6 flex flex-col gap-6 border border-gray-300 dark:border-neutral-800">
-                {/* Top Section */}
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
-                    {/* Title */}
-                    <div className="flex flex-col gap-2">
-                        {/* <h2 className="text-3xl font-bold">3</h2> */}
-                        <h2 className="text-3xl">Insights</h2>
-                        <p className="text-sm text-gray-600 dark:text-white max-w-xl">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
 
-                    {/* CTA Button */}
-                    <div className="flex items-center gap-3">
-                        <Button
-                            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm font-medium text-white"
-                            onClick={() => setOpenAddProfile(true)}
-                        >
-                            Configure
-                        </Button>
-                    </div>
+                <Filters />
+
+                {/* Stats Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    {props?.config.stats
+                        .filter((c) => c.visible)
+                        .map((card) => (
+                            <StatsCard key={card.id} {...card} />
+                        ))}
                 </div>
-            </div>
 
-            <Filters />
+                {/* Reports / Statistics Grid */}
+                <div>
+                    <h2 className="text-xl font-semibold text-black dark:text-white mb-2">
+                        Statistics and Reports
+                    </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {props?.config.reports
+                        .filter((c) => c.visible)
+                        .map((rep) => (
+                            <Reports key={rep.id} {...rep} />
+                        ))}
+                </div>
 
-            {/* Stats Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {props?.config.stats
-                    .filter((c) => c.visible)
-                    .map((card) => (
-                        <StatsCard key={card.id} {...card} />
-                    ))}
-            </div>
-
-            {/* Reports / Statistics Grid */}
-            <div>
-                <h2 className="text-xl font-semibold text-black dark:text-white mb-2">
-                    Statistics and Reports
-                </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {props?.config.reports
-                    .filter((c) => c.visible)
-                    .map((rep) => (
-                        <Reports key={rep.id} {...rep} />
-                    ))}
-            </div>
-
-            {/* <SidebarConfig
+                {/* <SidebarConfig
                 open={open}
                 setOpen={setOpen}
                 config={config}
                 setConfig={setConfig}
             /> */}
+            </div>
             <AddProfileDrawer title="Add Insight" open={openAddProfile} setOpen={setOpenAddProfile} />
+
         </div>
     )
 }
