@@ -22,7 +22,7 @@ export default function App() {
   const menu = useSelector((state) => state.menu)
   const { selectedModule } = useSelector((state) => state.modules)
   const [accessibilityOpen, setAccessibilityOpen] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [configOpen, setConfigOpen] = useState(false)
   const [config, setConfig] = useState(configJson)
   useAccessibility()
@@ -49,9 +49,9 @@ export default function App() {
               onToggleAccessibility={() => setAccessibilityOpen(!accessibilityOpen)}
             />
 
-            <main className="flex-1 overflow-y-auto p-4 dark:bg-[#0c1117]">
+            <main className="flex-1 overflow-y-auto dark:bg-[#0c1117]">
               <Routes>
-                <Route path="/dashboard" element={<Dashboard open={configOpen} setOpen={setConfigOpen} config={config} setConfig={setConfig} />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/questions" element={<Questions />} />
                 <Route path="/applications" element={<Applications />} />
                 <Route path="/assessments" element={<AssessmentProfiles />} />
@@ -65,16 +65,16 @@ export default function App() {
           </div>
 
           <AccessibilityPanel open={accessibilityOpen} setOpen={setAccessibilityOpen} />
-          <SidebarConfig
+          {/* <SidebarConfig
             open={configOpen}
             setOpen={setConfigOpen}
             config={config}
             setConfig={setConfig}
-          />
+          /> */}
         </div>) : (
         <div className="flex h-screen w-full bg-gray-50 dark:bg-gray-900">
-          <Login />
-          {/* <ModuleChooseContainer onClickModule={() => setIsLoggedIn(true)} /> */}
+          {/* <Login /> */}
+          <ModuleChooseContainer onClickModule={() => setIsLoggedIn(true)} />
         </div>
       )}
 

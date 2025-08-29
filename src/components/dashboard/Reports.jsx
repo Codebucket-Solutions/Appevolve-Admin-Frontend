@@ -26,33 +26,33 @@ const UserReports = ({
     const totalUsers = 3;
 
     return (
-        <div className="bg-white dark:bg-neutral-900 text-black dark:text-white rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 transition-colors duration-300">
+        <div className="bg-white dark:bg-[#151515] text-black dark:text-white rounded-lgborder border-[#C8C8C8] dark:border-[#323338] transition-colors duration-300">
 
             <div className="flex items-start justify-between mb-4 p-4">
                 <div>
                     <h2 className="text-xl font-medium">{title}</h2>
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer hover:underline">
+                    <p className="text-sm text-neutral-500 dark:text-white cursor-pointer hover:underline">
                         {subtitle}
                     </p>
                 </div>
-                <div className="bg-neutral-100 dark:bg-neutral-700 p-2 rounded-full cursor-pointer">
+                <div className="bg-neutral-100 dark:bg-[#323338] p-2 rounded-full cursor-pointer">
                     <LIcon name="Users" size={24} className="text-black dark:text-white" />
                 </div>
             </div>
 
-            <hr className="border-neutral-200 dark:border-neutral-700" />
+            <hr className="border-neutral-200 dark:border-[#323338]" />
 
             <div className="mb-8 p-4">
                 <span className="text-4xl font-semibold">{totalUsers}</span>
                 <span className="text-green-500 ml-2 text-lg">+3</span>
-                <p className="text-neutral-500 dark:text-neutral-400 text-sm">last 30d</p>
+                <p className="text-neutral-500 dark:text-white text-sm">last 30d</p>
             </div>
 
             {/* Chart container */}
             <div className="w-full h-48">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={chartData} margin={{ top: 5, right: 20, left: -20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-neutral-700" vertical={false} />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-[#323338]" vertical={false} />
                         <XAxis dataKey="name" stroke="#6b7280" className="dark:stroke-neutral-400" tick={{ fontSize: 12 }} />
                         <YAxis stroke="#6b7280" className="dark:stroke-neutral-400" tick={{ fontSize: 12 }} />
                         <Tooltip

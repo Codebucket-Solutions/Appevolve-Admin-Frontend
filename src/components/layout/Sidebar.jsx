@@ -4,11 +4,12 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import modules from "@/lib/modules.json"
 import useSidebar from "@/hooks/useSidebar"
-import { ChevronDown, Menu, Search as SearchIcon } from "lucide-react"
+import { ChevronDown, Menu, Search as SearchIcon, PanelRight } from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleSidebar } from "@/store/layoutSlice"
 import * as Lucide from "lucide-react"
+// import logo from "../../assets/logos/logo_sidebar.png"
 
 const LIcon = ({ name, className }) => {
     const Cmp = Lucide[name]
@@ -94,32 +95,31 @@ const Sidebar = () => {
 
     return (
         <div
-            className={`h-screen dark:bg-neutral-900 text-white flex flex-col justify-between border-r border-neutral-800 transition-all duration-300 ${collapsed ? "w-16" : "w-64"
+            className={`h-screen dark:bg-[#151515] text-white flex flex-col justify-between border-r border-[#D5D5D5] dark:border-[#323338] transition-all duration-300 ${collapsed ? "w-16 justify-center items-center" : "w-64"
                 }`}
         >
-            {/* Top bar with app name + collapse button */}
-            <div className="flex items-center justify-between p-4 border-b border-neutral-800">
+            <div className="flex items-center justify-between p-4 border-b border-neutral-300 dark:border-neutral-800">
                 {!collapsed && (
-                    <span className="text-lg font-bold dark:text-white text-black">
-                        <LIcon name="Layers" className="inline h-6 w-6 mr-2 text-orange-500" />
-                        Dashboard
+                    <span className="text-lg font-bold text-black dark:text-white">
+                        {/* <img src={logo} alt="Logo" className="inline h-6 w-6 mr-2" /> */}
                     </span>
                 )}
                 <button
                     onClick={() => dispatch({ type: "layout/toggleSidebar" })}
-                    className="p-1 hover:bg-neutral-800 rounded"
+                    className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white"
                     aria-label="Toggle sidebar"
                 >
-                    <Lucide.Menu className="h-5 w-5" />
+                    <Lucide.PanelRight className="h-5 w-5" />
                 </button>
             </div>
 
+
             {/* --- Module header (Module 1 + Settings/Help + Search) --- */}
             <div className="px-3 py-3 border-b dark:border-neutral-800">
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
+                <div className={`flex items-center ${collapsed ? "justify-center" : "justify-between"}`}>
+                    <div className={`flex items-center ${collapsed ? "justify-center" : ""} gap-2`}>
                         <div
-                            className="h-6 w-6 rounded grid place-items-center text-xs font-bold"
+                            className={`h-6 w-6 rounded grid place-items-center text-xs font-bold `}
                             style={{
                                 backgroundColor: header.color || "#f97316",
                                 color: "#111",
@@ -128,11 +128,13 @@ const Sidebar = () => {
                         >
                             {header.initial || "S"}
                         </div>
-                        {!collapsed && <span className="dark:text-white text-black">{header.label}</span>}
+                        {!collapsed && (
+                            <span className="dark:text-white text-black">{header.label}</span>
+                        )}
                     </div>
                     {!collapsed && (
                         <select
-                            className="bg-transparent text-neutral-400 text-sm focus:outline-none  font-figtree"
+                            className="bg-transparent text-black dark:text-white text-sm focus:outline-none  font-figtree"
                             value={header.label}
                             onChange={(e) => {
                                 const selected = modules.moduleHeader.find((h) => h.label === e.target.value);
@@ -142,7 +144,7 @@ const Sidebar = () => {
                             }}
                         >
                             {modules.moduleHeader.map((h) => (
-                                <option key={h.label} value={h.label} className="bg-neutral-800 text-white  font-figtree">
+                                <option key={h.label} value={h.label} className="bg-primary text-black dark:text-white font-figtree">
                                     {h.label}
                                 </option>
                             ))}
@@ -150,47 +152,56 @@ const Sidebar = () => {
                     )}
                 </div>
 
-                {!collapsed && (
-                    <>
-                        {/* quick links */}
-                        <div className="mt-4 space-y-3  font-figtree">
-                            {header.actions?.map((a) => (
-                                <Link
-                                    key={a.label}
-                                    to={a.route}
-                                    className="flex items-center gap-3 text-sm dark:text-white hover:text-black text-black"
-                                >
-                                    <LIcon name={a.icon} className="h-5 w-5" />
-                                    <span>{a.label}</span>
-                                </Link>
-                            ))}
-                        </div>
+                {/* quick links */}
+                <div className="mt-4 space-y-3 font-figtree">
+                    {header.actions?.map((a) => (
+                        <Link
+                            key={a.label}
+                            to={a.route}
+                            className={`flex items-center ${collapsed ? "justify-center" : ""} gap-3 text-sm dark:text-white hover:text-black text-black`}
+                        >
+                            {/* icon always visible */}
+                            <LIcon name={a.icon} className="h-5 w-5" />
 
-                        {/* search */}
-                        {header.search?.enabled && (
-                            <div className="mt-4">
-                                <div className="relative">
-                                    <Lucide.Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
-                                    <Input
-                                        placeholder={header.search.placeholder || "Search"}
-                                        className="pl-8 bg-black border-neutral-700 text-white placeholder:text-white"
-                                    />
-                                </div>
+                            {/* label only when expanded */}
+                            {!collapsed && <span>{a.label}</span>}
+                        </Link>
+                    ))}
+                </div>
+
+                {/* search */}
+                {header.search?.enabled && (
+                    <div className="mt-3">
+                        {collapsed ? (
+                            <button className="p-2 border-1 border-[#676879] hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-xl">
+                                <Lucide.Search className="h-5 w-5 dark:text-[#676879] text-black" />
+                            </button>
+
+
+                        ) : (
+                            <div className="relative">
+                                <Lucide.Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-black dark:text-[#676879]" />
+                                <Input
+                                    placeholder={header.search.placeholder || "Search"}
+                                    className="pl-8 w-full bg-neutral-100 text-black dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879] rounded-md"
+                                />
                             </div>
                         )}
-                    </>
+                    </div>
                 )}
+
+
             </div>
 
             {/* --- Sections (MAIN) --- */}
             <div className="p-2 space-y-4 overflow-y-auto flex-1 pr-3">
                 {modules.modules.map((section) => (
                     <div key={section.label}>
-                        {!collapsed && (
-                            <p className="text-xs text-black dark:text-white uppercase mb-2">
-                                {section.label}
-                            </p>
-                        )}
+                        {/* {!collapsed && ( */}
+                        <p className={`text-xs text-black dark:text-white uppercase mb-2 ${collapsed ? "text-center" : ""}`}>
+                            {section.label}
+                        </p>
+                        {/* )} */}
                         <div className="space-y-1">
                             {section.children.map((item) => (
                                 <SidebarItem
@@ -234,7 +245,7 @@ const Sidebar = () => {
                                         <p className="text-sm font-medium text-black dark:text-white">
                                             {modules.profile.name}
                                         </p>
-                                        <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                                        <p className="text-xs text-black dark:text-white">
                                             {modules.profile.email}
                                         </p>
                                     </div>
