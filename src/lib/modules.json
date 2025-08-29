@@ -1,8 +1,8 @@
 {
     "moduleHeader": [
         {
-            "label": "Module 1",
-            "initial": "S",
+            "label": "Assessment Engine",
+            "initial": "A",
             "color": "#f97316",
             "actions": [
                 {
@@ -22,8 +22,8 @@
             }
         },
         {
-            "label": "Module 2",
-            "initial": "M",
+            "label": "Design Engine",
+            "initial": "D",
             "color": "#06b6d4",
             "actions": [
                 {
@@ -43,8 +43,8 @@
             }
         },
         {
-            "label": "Module 3",
-            "initial": "A",
+            "label": "Code Maestro",
+            "initial": "C",
             "color": "#10b981",
             "actions": [
                 {
@@ -71,37 +71,7 @@
                 {
                     "label": "Questions",
                     "icon": "HelpCircle",
-                    "route": "/questions",
-                    "badge": 2,
-                    "children": [
-                        {
-                            "label": "Heading",
-                            "children": [
-                                {
-                                    "label": "Sub Heading",
-                                    "children": [
-                                        {
-                                            "label": "Detailed",
-                                            "route": "/questions/detailed"
-                                        },
-                                        {
-                                            "label": "Extra Detail",
-                                            "route": "/questions/detailed/extra"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "label": "Sub Heading 2",
-                                    "children": [
-                                        {
-                                            "label": "Another Detail",
-                                            "route": "/questions/another"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
+                    "route": "/questions"
                 },
                 {
                     "label": "Applications",

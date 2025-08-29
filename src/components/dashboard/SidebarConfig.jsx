@@ -15,14 +15,19 @@ import {
 } from "@dnd-kit/sortable"
 import SortableItem from "./SortableItem"
 import { Button } from "../ui/button"
+import AnimatedTabs from "../questions/AnimatedTabs"
 
 const SidebarConfig = ({ open, setOpen, config, setConfig }) => {
-    const [activeTab, setActiveTab] = useState("stats") // "stats" or "reports"
+    const [activeTab, setActiveTab] = useState("stats")
 
     const sensors = useSensors(
         useSensor(PointerSensor),
-        useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates,
+        })
     )
+
+    const tabs = ["stats", "reports"]
 
     const handleDragEnd = (event, type) => {
         const { active, over } = event
@@ -38,160 +43,126 @@ const SidebarConfig = ({ open, setOpen, config, setConfig }) => {
 
     return (
         <div
-            className={`fixed top-0 right-0 h-screen bg-[#000000] transition-all duration-300 ease-in-out z-50
-        ${open ? "w-[20vw] min-w-[350px] p-4" : "w-0 overflow-hidden"}`}
+            className={`fixed right-0 top-[3.8rem] h-[calc(100vh-3.8rem)] dark:bg-[#111111] text-black dark:text-white 
+    transition-all duration-300 ease-in-out overflow-hidden
+    ${open ? "w-[20vw] min-w-[350px] border-l border-[#B5B5B5] dark:border-[#323338]" : "w-0"}`}
         >
-            {/* Header */}
-            <div className="p-4 flex justify-between items-center border-b border-neutral-700">
-                <h2 className="text-lg font-semibold">Configure Dashboard</h2>
-                {/* Extra Sections */}
-
-
-                {/* <div>
-                    <h3 className="text-base font-semibold mb-2">Section 1</h3>
-                    <p className="text-sm text-neutral-400">
-                        Manage stats and KPIs that appear on your dashboard.
-                    </p>
-                </div> */}
-
-
-                <Button
-                    onClick={() => setOpen(false)}
-                    variant="outline"
-                    className="text-neutral-400 hover:text-white"
-                >
-                    ✕
-                </Button>
-
-            </div>
-
-            {/* Subheader Description */}
-            <div className="px-4 py-2 text-sm text-neutral-400 border-b border-neutral-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            </div>
-
-            <Button
-                // onClick={() => setOpen(false)}
-                // variant="ghost"
-                className="m-4 text-sm bg-blue-600 text-white hover:text-white"
+            <div
+                className={`flex flex-col h-full transition-opacity duration-200
+      ${open ? "opacity-100 delay-150" : "opacity-0"}`}
             >
-                Setting
-            </Button>
 
-            {/* Tabs */}
-            <div className="flex border-b border-neutral-700">
-                <button
-                    className={`flex-1 py-2 ${activeTab === "stats"
-                        ? "bg-neutral-800 font-semibold"
-                        : "hover:bg-neutral-800"
-                        }`}
-                    onClick={() => setActiveTab("stats")}
-                >
-                    Stats
-                </button>
-                <button
-                    className={`flex-1 py-2 ${activeTab === "reports"
-                        ? "bg-neutral-800 font-semibold"
-                        : "hover:bg-neutral-800"
-                        }`}
-                    onClick={() => setActiveTab("reports")}
-                >
-                    Reports
-                </button>
-            </div>
-
-            {/* Content */}
-            <div className="p-4 overflow-y-auto h-[calc(100%-160px)] space-y-6">
-
-
-                {/* Stats Config */}
-                {activeTab === "stats" && (
-                    <DndContext
-                        sensors={sensors}
-                        collisionDetection={closestCenter}
-                        onDragEnd={(e) => handleDragEnd(e, "stats")}
-                    >
-                        <SortableContext
-                            items={config.stats.map((c) => c.id)}
-                            strategy={verticalListSortingStrategy}
+                {/* Header */}
+                <div className="p-4 flex flex-col gap-1">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-lg font-semibold dark:text-white">
+                            Configure Dashboard
+                        </h2>
+                        <Button
+                            onClick={() => setOpen(false)}
+                            variant="outline"
+                            className="dark:text-white dark:bg-black bg-black text-white hover:text-black dark:hover:text-white"
                         >
-                            {config.stats.map((c) => (
-                                <SortableItem
-                                    key={c.id}
-                                    id={c.id}
-                                    label={c.title}
-                                    checked={c.visible}
-                                    onToggle={() =>
-                                        setConfig({
-                                            ...config,
-                                            stats: config.stats.map((s) =>
-                                                s.id === c.id
-                                                    ? { ...s, visible: !s.visible }
-                                                    : s
-                                            ),
-                                        })
-                                    }
-                                />
-                            ))}
-                        </SortableContext>
-                    </DndContext>
-                )}
+                            ✕
+                        </Button>
+                    </div>
 
-                {/* Reports Section */}
-                <div>
-                    <h3 className="text-base font-semibold mb-2">Reports and Graphs</h3>
-                    <p className="text-sm text-neutral-400">
-                        Enable or disable reports that display insights.
-                    </p>
+                    <div className="py-2 text-sm dark:text-white">
+                        Manage your dashboard layout and visibility settings.
+                    </div>
+
+                    <div>
+                        <Button className="items-center justify-center text-sm bg-blue-600 text-white hover:bg-blue-accent pointer-events-auto">
+                            Setting
+                        </Button>
+                    </div>
                 </div>
 
-                {activeTab === "reports" && (
-                    <DndContext
-                        sensors={sensors}
-                        collisionDetection={closestCenter}
-                        onDragEnd={(e) => handleDragEnd(e, "reports")}
-                    >
-                        <SortableContext
-                            items={config.reports.map((r) => r.id)}
-                            strategy={verticalListSortingStrategy}
-                        >
-                            {config.reports.map((r) => (
-                                <SortableItem
-                                    key={r.id}
-                                    id={r.id}
-                                    label={r.title}
-                                    checked={r.visible}
-                                    onToggle={() =>
-                                        setConfig({
-                                            ...config,
-                                            reports: config.reports.map((rep) =>
-                                                rep.id === r.id
-                                                    ? { ...rep, visible: !rep.visible }
-                                                    : rep
-                                            ),
-                                        })
-                                    }
-                                />
-                            ))}
-                        </SortableContext>
-                    </DndContext>
-                )}
-            </div>
+                {/* Tabs */}
+                <AnimatedTabs
+                    tabs={tabs}
+                    activeTab={activeTab}
+                    onTabChange={setActiveTab}
+                />
 
-            {/* Footer */}
-            <div className="p-4 flex justify-end gap-2 border-t border-neutral-700">
-                <button
-                    className="px-4 py-2 rounded bg-neutral-700 hover:bg-neutral-600"
-                    onClick={() => setOpen(false)}
-                >
-                    Cancel
-                </button>
-                <button
-                    className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700"
-                    onClick={() => setOpen(false)}
-                >
-                    Save
-                </button>
+                {/* Content */}
+                <div className="p-4 overflow-y-auto flex-1 space-y-6">
+                    {activeTab === "stats" && (
+                        <DndContext
+                            sensors={sensors}
+                            collisionDetection={closestCenter}
+                            onDragEnd={(e) => handleDragEnd(e, "stats")}
+                        >
+                            <SortableContext
+                                items={config.stats.map((c) => c.id)}
+                                strategy={verticalListSortingStrategy}
+                            >
+                                {config.stats.map((c) => (
+                                    <SortableItem
+                                        key={c.id}
+                                        id={c.id}
+                                        label={c.title}
+                                        checked={c.visible}
+                                        onToggle={() =>
+                                            setConfig({
+                                                ...config,
+                                                stats: config.stats.map((s) =>
+                                                    s.id === c.id ? { ...s, visible: !s.visible } : s
+                                                ),
+                                            })
+                                        }
+                                    />
+                                ))}
+                            </SortableContext>
+                        </DndContext>
+                    )}
+
+                    {activeTab === "reports" && (
+                        <DndContext
+                            sensors={sensors}
+                            collisionDetection={closestCenter}
+                            onDragEnd={(e) => handleDragEnd(e, "reports")}
+                        >
+                            <SortableContext
+                                items={config.reports.map((r) => r.id)}
+                                strategy={verticalListSortingStrategy}
+                            >
+                                {config.reports.map((r) => (
+                                    <SortableItem
+                                        key={r.id}
+                                        id={r.id}
+                                        label={r.title}
+                                        checked={r.visible}
+                                        onToggle={() =>
+                                            setConfig({
+                                                ...config,
+                                                reports: config.reports.map((rep) =>
+                                                    rep.id === r.id ? { ...rep, visible: !rep.visible } : rep
+                                                ),
+                                            })
+                                        }
+                                    />
+                                ))}
+                            </SortableContext>
+                        </DndContext>
+                    )}
+                </div>
+
+                {/* Footer */}
+                <div className="p-4 flex justify-end gap-2">
+                    <button
+                        className="px-4 py-2 rounded bg-neutral-700 hover:bg-neutral-600"
+                        onClick={() => setOpen(false)}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700"
+                        onClick={() => setOpen(false)}
+                    >
+                        Save
+                    </button>
+                </div>
             </div>
         </div>
     )
