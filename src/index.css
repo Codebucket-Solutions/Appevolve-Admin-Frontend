@@ -6,16 +6,19 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
-  body {
+
+  body,
+  h1 {
     font-family: 'Poppins', sans-serif;
   }
 
-  h1,
   h2,
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  p,
+  label {
     font-family: 'Figtree', sans-serif;
   }
 
@@ -31,6 +34,7 @@
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
+  /* --height-header: calc(var(--height) - 3.8rem); */
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
@@ -82,7 +86,7 @@
   font-size: 160%;
 }
 
-.adhd-mode *:focus {
+.adhd-mode :focus {
   outline: 3px solid red !important;
 }
 
@@ -95,6 +99,10 @@
   background-color: #121212 !important;
   color: #e0e0e0 !important;
 }
+
+/* .test-height {
+  @apply h-screen-header bg-green-500;
+} */
 
 :root {
   /* --radius: 0.625rem; */

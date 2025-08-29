@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { use, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
@@ -9,7 +9,10 @@ import { Link, useLocation } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleSidebar } from "@/store/layoutSlice"
 import * as Lucide from "lucide-react"
-import logo from "../../assets/logos/logo_sidebar.png"
+// import logo from "../../assets/logos/logo_sidebar.png"
+import logo from '../../assets/logos/rect_logo.png'
+
+import LogoutButton from "@/container/authContainer/Logout"
 
 const LIcon = ({ name, className }) => {
     const Cmp = Lucide[name]
@@ -86,12 +89,18 @@ const SidebarItem = ({ item, depth = 0, openItems, toggleItem }) => {
     );
 };
 
-const Sidebar = () => {
+const Sidebar = ({ handleLogout }) => {
     const { openItems, toggleItem } = useSidebar();
+    const { selectedModule } = useSelector((state) => state.modules);
     const dispatch = useDispatch();
     const collapsed = useSelector((s) => s.layout.collapsed);
-    const [selectedHeader, setSelectedHeader] = useState(modules.moduleHeader[0]);
+    console.log(modules.moduleHeader)
+    const [selectedHeader, setSelectedHeader] = useState({});
     const header = selectedHeader;
+
+    useEffect(() => {
+        setSelectedHeader(modules.moduleHeader.find((h) => h?.label === selectedModule));
+    }, [modules.moduleHeader, selectedModule]);
 
     return (
         <div
@@ -101,7 +110,7 @@ const Sidebar = () => {
             <div className="flex items-center justify-between p-4 border-b border-neutral-300 dark:border-neutral-800">
                 {!collapsed && (
                     <span className="text-lg font-bold text-black dark:text-white">
-                        <img src={logo} alt="Logo" className="inline h-6 w-6 mr-2" />
+                        <img src={logo} alt="Logo" className="inline h-4 mr-2" />
                     </span>
                 )}
                 <button
@@ -121,21 +130,24 @@ const Sidebar = () => {
                         <div
                             className={`h-6 w-6 rounded grid place-items-center text-xs font-bold `}
                             style={{
-                                backgroundColor: header.color || "#f97316",
+                                backgroundColor: header?.color || "#f97316",
                                 color: "#111",
                             }}
                             aria-hidden
                         >
-                            {header.initial || "S"}
+                            {header?.initial || "S"}
                         </div>
-                        {!collapsed && (
-                            <span className="dark:text-white text-black">{header.label}</span>
-                        )}
+                        {/* {!collapsed ? (
+                            <span className="dark:text-white text-black">
+                                {header.label.charAt(0)}
+                            </span>
+                        ) : null} */}
+
                     </div>
                     {!collapsed && (
                         <select
                             className="bg-transparent text-black dark:text-white text-sm focus:outline-none  font-figtree"
-                            value={header.label}
+                            value={header?.label}
                             onChange={(e) => {
                                 const selected = modules.moduleHeader.find((h) => h.label === e.target.value);
                                 if (selected) {
@@ -154,7 +166,7 @@ const Sidebar = () => {
 
                 {/* quick links */}
                 <div className="mt-4 space-y-3 font-figtree">
-                    {header.actions?.map((a) => (
+                    {header?.actions?.map((a) => (
                         <Link
                             key={a.label}
                             to={a.route}
@@ -170,10 +182,10 @@ const Sidebar = () => {
                 </div>
 
                 {/* search */}
-                {header.search?.enabled && (
+                {header?.search?.enabled && (
                     <div className="mt-3">
                         {collapsed ? (
-                            <button className="p-2 border-1 border-[#676879] hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-xl">
+                            <button className="p-2 border-1 border-[#676879] hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-[4px]">
                                 <Lucide.Search className="h-5 w-5 dark:text-[#676879] text-black" />
                             </button>
 
@@ -183,7 +195,7 @@ const Sidebar = () => {
                                 <Lucide.Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-black dark:text-[#676879]" />
                                 <Input
                                     placeholder={header.search.placeholder || "Search"}
-                                    className="pl-8 w-full bg-neutral-100 text-black dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879] rounded-md"
+                                    className="pl-8 w-full bg-neutral-100 text-black dark:bg-[#151515] dark:text-white dark:placeholder:text-[#676879] rounded-[4px]"
                                 />
                             </div>
                         )}
@@ -216,52 +228,54 @@ const Sidebar = () => {
                 ))}
             </div>
 
-            {/* --- Profile --- */}
             <div className="p-4 border-t border-neutral-200 dark:border-neutral-800">
                 {collapsed ? (
-                    <Avatar className="h-10 w-10 mx-auto">
-                        <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
-                        <AvatarFallback>{modules.profile.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
+                    <button
+                        // onClick={() => dispatch(logout())}
+                        className="block mx-auto"
+                    >
+                        <Avatar className="h-10 w-10">
+                            <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
+                            <AvatarFallback>{modules.profile.name.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                    </button>
                 ) : (
-                    <div >
-                        {collapsed ? (
-                            <Avatar className="h-10 w-10 mx-auto bg-gray-100 dark:bg-neutral-700">
+                    <div>
+                        <button
+                            className="w-full flex items-center gap-3 text-left p-2 rounded-[4px] transition"
+                        >
+                            <Avatar className="bg-gray-100 dark:bg-neutral-700">
                                 <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
                                 <AvatarFallback className="text-black dark:text-white">
                                     {modules.profile.name.charAt(0)}
                                 </AvatarFallback>
                             </Avatar>
-                        ) : (
-                            <>
-                                <div className="flex items-center gap-3">
-                                    <Avatar className="bg-gray-100 dark:bg-neutral-700">
-                                        <AvatarImage src={modules.profile.avatar} alt={modules.profile.name} />
-                                        <AvatarFallback className="text-black dark:text-white">
-                                            {modules.profile.name.charAt(0)}
-                                        </AvatarFallback>
-                                    </Avatar>
-                                    <div>
-                                        <p className="text-sm font-medium text-black dark:text-white">
-                                            {modules.profile.name}
-                                        </p>
-                                        <p className="text-xs text-black dark:text-white">
-                                            {modules.profile.email}
-                                        </p>
-                                    </div>
-                                </div>
-                                <Button
-                                    variant="secondary"
-                                    className="w-full mt-3 bg-white dark:bg-white text-black dark:text-black border border-neutral-300 dark:border-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-600"
-                                >
-                                    {modules.profile.cta}
-                                </Button>
-                            </>
-                        )}
-                    </div>
+                            <div className="">
+                                <p className="text-sm font-medium text-black dark:text-white">
+                                    {modules.profile.name}
+                                </p>
+                                <p className="text-xs text-black dark:text-white">
+                                    {modules.profile.email}
+                                </p>
 
+                            </div>
+                            <div className="mt-auto">
+                                <LogoutButton handleLogout={handleLogout} />
+                            </div>
+                        </button>
+
+
+                        <Button
+                            variant="secondary"
+                            className="w-full mt-3 bg-white dark:bg-white text-black dark:text-black border border-neutral-300 dark:border-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-600"
+                        >
+                            {modules.profile.cta}
+                        </Button>
+
+                    </div>
                 )}
             </div>
+
 
         </div>
     );

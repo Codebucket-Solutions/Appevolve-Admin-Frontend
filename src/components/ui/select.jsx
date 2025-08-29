@@ -23,7 +23,7 @@ function SelectTrigger({ className, size = "default", children, ...props }) {
       data-size={size}
       className={cn(
         "data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground",
-        "flex w-fit items-center justify-between gap-2 whitespace-nowrap rounded-md border px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none",
+        "flex w-fit items-center justify-between gap-2 whitespace-nowrap rounded-[4px] border px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none",
         "focus-visible:border-blue-500 focus-visible:ring-2 focus-visible:ring-blue-500",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "border-[#D5D5D5] dark:border-[#323338] dark:bg-input/30 dark:hover:bg-input/50",
@@ -49,7 +49,7 @@ function SelectContent({ className, children, position = "popper", ...props }) {
         data-slot="select-content"
         className={cn(
           "bg-popover text-popover-foreground",
-          "relative z-50 min-w-[8rem] max-h-(--radix-select-content-available-height) overflow-x-hidden overflow-y-auto rounded-md border shadow-md",
+          "relative z-50 min-w-[8rem] max-h-(--radix-select-content-available-height) overflow-x-hidden overflow-y-auto rounded-[4px] border shadow-md",
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           "border-[#D5D5D5] dark:border-[#323338]",
           position === "popper" &&

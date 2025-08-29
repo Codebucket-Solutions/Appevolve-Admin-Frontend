@@ -57,8 +57,8 @@ const QuestionsTable = () => {
     };
 
     return (
-        <div className="bg-neutral-900 rounded-xl shadow p-6 flex flex-col gap-4">
-            <Table className="border border-neutral-800 rounded-md">
+        <div className="bg-neutral-900 rounded-[4px] shadow p-6 flex flex-col gap-4">
+            <Table className="border border-neutral-800 rounded-[4px]">
                 <TableHeader className="bg-neutral-800">
                     <TableRow>
                         {columns.map((col) => (
