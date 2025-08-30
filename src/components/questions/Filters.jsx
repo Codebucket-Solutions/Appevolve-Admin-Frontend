@@ -46,7 +46,7 @@ const Filters = () => {
                         <PopoverTrigger asChild>
                             <Button
                                 variant="outline"
-                                className="flex items-center gap-1 bg-white dark:bg-[#151515] border border-gray-300 dark:border-neutral-700 text-sm hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full px-3"
+                                className="flex items-center gap-1 bg-white dark:bg-[#111111] border border-gray-300 dark:border-[#323338] text-sm hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full px-3 h-6"
                             >
                                 <X
                                     onClick={(e) => {
@@ -93,7 +93,7 @@ const Filters = () => {
                 </Button> */}
                 <Button
                     variant="outline"
-                    className="flex items-center gap-1 ml-auto bg-gray-100 dark:bg-neutral-800 border border-gray-300 dark:border-neutral-700 hover:bg-gray-200 dark:hover:bg-neutral-700 text-sm rounded-full"
+                    className="flex items-center gap-1 ml-auto bg-gray-100 dark:bg-[#323338] dark:text-white border border-gray-300 dark:border-neutral-700 hover:bg-gray-200 dark:hover:bg-neutral-700 text-sm rounded-full h-6"
                     onClick={() => setSelected({})}
                 >
                     Clear All <X className="h-4 w-4" />

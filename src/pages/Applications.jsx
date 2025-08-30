@@ -144,25 +144,25 @@ const Applications = () => {
                         {
                             label: "Change Client",
                             className:
-                                "bg-green-50 dark:bg-green-900 text-green-600 dark:text-white border border-green-200 dark:border-green-900 hover:bg-green-100 dark:hover:bg-green-800 transition-colors",
+                                "bg-[#6543FF] text-white",
                             onClick: () => console.log("Change Client"),
                         },
                         {
                             label: "Import",
                             className:
-                                "bg-yellow-50 dark:bg-yellow-900 text-yellow-600 dark:text-white border border-yellow-200 dark:border-yellow-900 hover:bg-yellow-100 dark:hover:bg-yellow-800 transition-colors",
+                                "bg-[#00A84E] text-white",
                             onClick: () => console.log("Import"),
                         },
                         {
                             label: "Export All",
                             className:
-                                "bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-white border border-blue-200 dark:border-blue-900 hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors",
+                                "bg-[#353535] text-white",
                             onClick: () => console.log("Export"),
                         },
                         {
                             label: "Delete",
                             className:
-                                "bg-red-50 dark:bg-red-900 text-red-600 dark:text-white border border-red-200 dark:border-red-900 hover:bg-red-100 dark:hover:bg-red-800 transition-colors",
+                                "bg-[#FE1E1E] text-white",
                             onClick: () => console.log("Delete"),
                         },
                     ]}

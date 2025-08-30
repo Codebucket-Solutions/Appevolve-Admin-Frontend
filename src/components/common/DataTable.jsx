@@ -96,7 +96,7 @@ export default function DataTable({
                             table.getRowModel().rows.map((row) => (
                                 <TableRow
                                     key={row.id}
-                                    className="divide-x divide-neutral-800 border-b border-[#B5B5B5] dark:border-[#676879] hover:bg-neutral-400"
+                                    className="divide-x divide-neutral-800 border-b border-[#B5B5B5] dark:border-[#676879]"
                                 >
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell
