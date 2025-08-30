@@ -15,7 +15,7 @@ function Input({
         // focus styles
         // "focus-visible:border-blue-500 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:shadow-[0_0_8px_2px_rgba(59,130,246,0.5)]",
         // error style
-        "border-[#D5D5D5] dark:border-[#323338] rounded-[4px]",
+        "border-[#D5D5D5] dark:border-[#323338] rounded-[4px] bg-black",
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         className
       )}

@@ -125,7 +125,7 @@ const Sidebar = ({ handleLogout }) => {
 
             {/* --- Module header (Module 1 + Settings/Help + Search) --- */}
             <div className="px-3 py-3 border-b dark:border-neutral-800">
-                <div className={`flex items-center ${collapsed ? "justify-center" : "justify-between"}`}>
+                <div className={`flex items-center ${collapsed ? "justify-center" : "justify-between gap-1"}`}>
                     <div className={`flex items-center ${collapsed ? "justify-center" : ""} gap-2`}>
                         <div
                             className={`h-6 w-6 rounded grid place-items-center text-xs font-bold `}
@@ -146,7 +146,7 @@ const Sidebar = ({ handleLogout }) => {
                     </div>
                     {!collapsed && (
                         <select
-                            className="bg-transparent text-black dark:text-white text-sm focus:outline-none  font-figtree"
+                            className="bg-transparent text-black dark:text-white text-sm focus:outline-none  font-figtree w-full"
                             value={header?.label}
                             onChange={(e) => {
                                 const selected = modules.moduleHeader.find((h) => h.label === e.target.value);

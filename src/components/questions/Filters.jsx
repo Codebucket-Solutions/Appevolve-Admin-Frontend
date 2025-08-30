@@ -36,7 +36,7 @@ const Filters = () => {
     }
 
     return (
-        <div className="bg-white dark:bg-[#151515] rounded-[4px] shadow p-6 flex flex-col gap-3 border border-gray-200 dark:border-neutral-800 text-black dark:text-white">
+        <div className="bg-white dark:bg-[#151515] rounded-[4px] shadow p-6 flex flex-col gap-3 border border-gray-200 dark:border-neutral-800 text-black dark:text-[#676879]">
             <h3 className="text-lg font-semibold">Filters</h3>
 
             {/* Filter pills */}
@@ -46,20 +46,20 @@ const Filters = () => {
                         <PopoverTrigger asChild>
                             <Button
                                 variant="outline"
-                                className="flex items-center gap-1 bg-white dark:bg-[#151515] border border-gray-300 dark:border-neutral-700 text-sm hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full px-3"
+                                className="flex items-center gap-1 bg-white dark:bg-[#111111] border border-gray-300 dark:border-[#323338] text-sm hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full px-3 h-6"
                             >
                                 <X
                                     onClick={(e) => {
                                         e.stopPropagation() // prevent popover opening
                                         removeFilter(f.id)
                                     }}
-                                    className="h-4 w-4 text-gray-500 dark:text-white hover:text-red-500 dark:hover:text-red-400 cursor-pointer"
+                                    className="h-4 w-4 text-gray-500 dark:text-[#676879] hover:text-red-500 dark:hover:text-red-400 cursor-pointer"
                                 />
                                 <span>
                                     {f.label}
                                     {selected[f.id]?.length > 0 && `: ${selected[f.id].length} selected`}
                                 </span>
-                                <ChevronDown className="h-4 w-4 text-gray-500 dark:text-white" />
+                                <ChevronDown className="h-4 w-4 text-gray-500 dark:text-[#676879]" />
                             </Button>
                         </PopoverTrigger>
 
@@ -93,7 +93,7 @@ const Filters = () => {
                 </Button> */}
                 <Button
                     variant="outline"
-                    className="flex items-center gap-1 ml-auto bg-gray-100 dark:bg-neutral-800 border border-gray-300 dark:border-neutral-700 hover:bg-gray-200 dark:hover:bg-neutral-700 text-sm rounded-full"
+                    className="flex items-center gap-1 ml-auto bg-gray-100 dark:bg-[#323338] dark:text-white border border-gray-300 dark:border-neutral-700 hover:bg-gray-200 dark:hover:bg-neutral-700 text-sm rounded-full h-6"
                     onClick={() => setSelected({})}
                 >
                     Clear All <X className="h-4 w-4" />

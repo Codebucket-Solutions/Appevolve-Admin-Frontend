@@ -158,9 +158,9 @@ export default function AddProfileDrawer({ open, setOpen, title }) {
 
                 {/* Footer */}
                 {open && (
-                    <div className="flex justify-end gap-2 border-t border-neutral-300 dark:border-neutral-800 p-4">
+                    <div className="flex justify-end gap-2  p-4">
                         <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
-                        <Button className="bg-blue-600 text-white hover:bg-blue-700">Submit</Button>
+                        <Button className="bg-[#0073EA] text-white hover:bg-blue-700">Submit</Button>
                     </div>
                 )}
             </div>
