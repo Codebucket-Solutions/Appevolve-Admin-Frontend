@@ -36,7 +36,7 @@ const Filters = () => {
     }
 
     return (
-        <div className="bg-white dark:bg-[#151515] rounded-[4px] shadow p-6 flex flex-col gap-3 border border-gray-200 dark:border-neutral-800 text-black dark:text-white">
+        <div className="bg-white dark:bg-[#151515] rounded-[4px] shadow p-6 flex flex-col gap-3 border border-gray-200 dark:border-neutral-800 text-black dark:text-[#676879]">
             <h3 className="text-lg font-semibold">Filters</h3>
 
             {/* Filter pills */}
@@ -53,13 +53,13 @@ const Filters = () => {
                                         e.stopPropagation() // prevent popover opening
                                         removeFilter(f.id)
                                     }}
-                                    className="h-4 w-4 text-gray-500 dark:text-white hover:text-red-500 dark:hover:text-red-400 cursor-pointer"
+                                    className="h-4 w-4 text-gray-500 dark:text-[#676879] hover:text-red-500 dark:hover:text-red-400 cursor-pointer"
                                 />
                                 <span>
                                     {f.label}
                                     {selected[f.id]?.length > 0 && `: ${selected[f.id].length} selected`}
                                 </span>
-                                <ChevronDown className="h-4 w-4 text-gray-500 dark:text-white" />
+                                <ChevronDown className="h-4 w-4 text-gray-500 dark:text-[#676879]" />
                             </Button>
                         </PopoverTrigger>
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import right_bottom__img from '../../assets/auth/screenshot-appevolve.png';
 import { Input } from '@/components/ui/input';
-import logo from '../../assets/logos/logo_sidebar.png';
+import logo from '../../assets/logos/square_logo.png';
 
 const Login = ({ onLogin, onForgotPassword }) => {
     const [isForgot, setIsForgot] = useState(false);
