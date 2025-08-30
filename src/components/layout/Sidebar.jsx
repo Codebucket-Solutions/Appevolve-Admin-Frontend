@@ -9,8 +9,8 @@ import { Link, useLocation } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleSidebar } from "@/store/layoutSlice"
 import * as Lucide from "lucide-react"
-// import logo from "../../assets/logos/logo_sidebar.png"
-import logo from '../../assets/logos/rect_logo.png'
+import logo from "../../assets/logos/logo_sidebar.png"
+// import logo from '../../assets/logos/rect_logo.png'
 
 import LogoutButton from "@/container/authContainer/Logout"
 
